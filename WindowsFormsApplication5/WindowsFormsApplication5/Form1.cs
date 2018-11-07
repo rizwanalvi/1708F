@@ -34,9 +34,8 @@ namespace WindowsFormsApplication5
                     {
                         case "ADMIN":
                             // Admin Code here
-                            frmMainWindowcs mwf = new frmMainWindowcs();
-                            mwf.Text = UseName;
-                            mwf.Show();
+                            frmMainWindowcs.button1.Visible = false;
+                            frmMainWindowcs.button2.Visible = true;
                             this.Hide();
                             break;
                         case "CUSTOMER":

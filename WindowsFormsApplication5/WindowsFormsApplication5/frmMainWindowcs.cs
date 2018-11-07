@@ -24,5 +24,18 @@ namespace WindowsFormsApplication5
             fmLogin.Show();
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form1 fmLogin = new Form1();
+            fmLogin.MdiParent = this;
+            fmLogin.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            button1.Visible = true;
+            button2.Visible = false;
+        }
     }
 }
