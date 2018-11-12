@@ -32,10 +32,11 @@ namespace WinAppMdiExample
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked) {
-
-                Form2.btnShow.Visible = false;
+                Form2.panelAdmin.Visible = true;
+              //  Form2.btnShow.Visible = false;
             } else {
-                Form2.btnShow.Visible = true;
+                //Form2.btnShow.Visible = true;
+                Form2.panelAdmin.Visible = false;
             }
         }
     }
