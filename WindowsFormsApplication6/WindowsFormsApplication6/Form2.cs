@@ -14,11 +14,17 @@ namespace WindowsFormsApplication6
     {
         public static Button _btnLogin = null;
         public static Button _btnLogOut = null;
+        public static Panel _AdminPanel = null;
+        public static Panel _UserPanel = null;
+
         public Form2()
         {
             InitializeComponent();
             _btnLogin = this.button1;
             _btnLogOut = this.button2;
+            _AdminPanel = this.panel2;
+            _UserPanel = this.panel3;
+          
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -43,6 +49,24 @@ namespace WindowsFormsApplication6
             LoadLogin();
             button1.Visible = true;
             button2.Visible = false;
+            panel2.Visible = false;
+            panel3.Visible = false;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            frmRegesteruser reguser = new frmRegesteruser();
+            reguser.MdiParent = this;
+            reguser.Show();
+        }
+
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DialogResult dlg = MessageBox.Show("You want to Close this Application", "Warning", MessageBoxButtons.YesNo);
+            if(dlg == DialogResult.No)
+            {
+              //  this.Close();
+            }
         }
     }
 }

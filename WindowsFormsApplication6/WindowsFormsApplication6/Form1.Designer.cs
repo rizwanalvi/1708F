@@ -46,14 +46,14 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '#';
             this.textBox2.Size = new System.Drawing.Size(171, 20);
-            this.textBox2.TabIndex = 0;
+            this.textBox2.TabIndex = 1;
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(87, 103);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 23);
-            this.button1.TabIndex = 1;
+            this.button1.TabIndex = 2;
             this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -66,9 +66,12 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

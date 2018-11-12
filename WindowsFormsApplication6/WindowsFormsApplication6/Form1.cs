@@ -17,7 +17,10 @@ namespace WindowsFormsApplication6
         {
             InitializeComponent();
             dbEnty = new DB1708FEntities();
+           
         }
+
+       
 
         private void button1_Click(object sender, EventArgs e)
         {try
@@ -29,12 +32,18 @@ namespace WindowsFormsApplication6
                     case "admin":
                         MessageBox.Show("Admin");
                         Form2._btnLogin.Visible = false;
+                        Form2._AdminPanel.Visible = true;
                         Form2._btnLogOut.Visible = true;
                         this.Hide();
 
                         break;
                     case "customer":
                         MessageBox.Show("Customer");
+                        Form2._btnLogin.Visible = false;
+                        Form2._UserPanel.Visible = true;
+                        Form2._btnLogOut.Visible = true;
+                        this.Hide();
+                       
                         break;
                     default:
                         break;
@@ -44,6 +53,11 @@ namespace WindowsFormsApplication6
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
