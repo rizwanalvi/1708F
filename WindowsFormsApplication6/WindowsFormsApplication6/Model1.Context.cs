@@ -27,5 +27,7 @@ namespace WindowsFormsApplication6
     
         public virtual DbSet<ROLE> ROLES { get; set; }
         public virtual DbSet<USER> USERS { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
     }
 }

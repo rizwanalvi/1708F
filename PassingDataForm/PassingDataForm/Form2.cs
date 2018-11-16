@@ -28,6 +28,7 @@ namespace PassingDataForm
         {
             label2.Text = ProductInfo.ProductId.ToString();
             textBox1.Text = ProductInfo.ProductName;
+            pictureBox1.Image = ProductInfo.ImgProduct;
         }
     }
 }

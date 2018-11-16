@@ -68,5 +68,12 @@ namespace WindowsFormsApplication6
               //  this.Close();
             }
         }
+
+        private void btnNewProduct_Click(object sender, EventArgs e)
+        {
+            frmNewProduct frmProc = new frmNewProduct();
+            frmProc.MdiParent = this;
+            frmProc.Show();
+        }
     }
 }

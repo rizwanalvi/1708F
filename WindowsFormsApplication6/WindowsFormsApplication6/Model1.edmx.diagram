@@ -8,6 +8,9 @@
         <EntityTypeShape EntityType="DB1708FModel.ROLE" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DB1708FModel.USER" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="DB1708FModel.FK__USERS__ROLE_ID__267ABA7A" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DB1708FModel.Category" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="DB1708FModel.Product" Width="1.5" PointX="3" PointY="4" />
+        <AssociationConnector Association="DB1708FModel.FK__Product__CATID__398D8EEE" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

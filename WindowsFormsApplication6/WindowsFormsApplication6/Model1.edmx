@@ -4,7 +4,25 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB1708FModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB1708FModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CATID" />
+          </Key>
+          <Property Name="CATID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CAT_NAME" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="PROID" />
+          </Key>
+          <Property Name="PROID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRO_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="BRAND" Type="varchar" MaxLength="50" />
+          <Property Name="PRICE" Type="float" />
+          <Property Name="QUANTITY" Type="int" />
+          <Property Name="CATID" Type="int" />
+        </EntityType>
         <EntityType Name="ROLES">
           <Key>
             <PropertyRef Name="ROLE_ID" />
@@ -21,6 +39,18 @@
           <Property Name="UPASS" Type="varchar(max)" />
           <Property Name="ROLE_ID" Type="int" />
         </EntityType>
+        <Association Name="FK__Product__CATID__398D8EEE">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CATID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__USERS__ROLE_ID__267ABA7A">
           <End Role="ROLES" Type="Self.ROLES" Multiplicity="0..1" />
           <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
@@ -34,15 +64,20 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DB1708FModelStoreContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Product__CATID__398D8EEE" Association="Self.FK__Product__CATID__398D8EEE">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
           <AssociationSet Name="FK__USERS__ROLE_ID__267ABA7A" Association="Self.FK__USERS__ROLE_ID__267ABA7A">
             <End Role="ROLES" EntitySet="ROLES" />
             <End Role="USERS" EntitySet="USERS" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB1708FModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -83,7 +118,45 @@
             <End Role="ROLES" EntitySet="ROLES" />
             <End Role="USERS" EntitySet="USERS" />
           </AssociationSet>
+          <EntitySet Name="Categories" EntityType="DB1708FModel.Category" />
+          <EntitySet Name="Products" EntityType="DB1708FModel.Product" />
+          <AssociationSet Name="FK__Product__CATID__398D8EEE" Association="DB1708FModel.FK__Product__CATID__398D8EEE">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CATID" />
+          </Key>
+          <Property Name="CATID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CAT_NAME" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="DB1708FModel.FK__Product__CATID__398D8EEE" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="PROID" />
+          </Key>
+          <Property Name="PROID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRO_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BRAND" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PRICE" Type="Double" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="CATID" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="DB1708FModel.FK__Product__CATID__398D8EEE" FromRole="Product" ToRole="Category" />
+        </EntityType>
+        <Association Name="FK__Product__CATID__398D8EEE">
+          <End Type="DB1708FModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="DB1708FModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CATID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -105,6 +178,26 @@
                 <ScalarProperty Name="UNAME" ColumnName="UNAME" />
                 <ScalarProperty Name="UPASS" ColumnName="UPASS" />
                 <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="DB1708FModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CAT_NAME" ColumnName="CAT_NAME" />
+                <ScalarProperty Name="CATID" ColumnName="CATID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="DB1708FModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="CATID" ColumnName="CATID" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="BRAND" ColumnName="BRAND" />
+                <ScalarProperty Name="PRO_NAME" ColumnName="PRO_NAME" />
+                <ScalarProperty Name="PROID" ColumnName="PROID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

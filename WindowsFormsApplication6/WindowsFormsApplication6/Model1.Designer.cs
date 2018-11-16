@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'c:\users\rizwan\documents\visual studio 2015\Projects\WindowsFormsApplication6\WindowsFormsApplication6\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\rizwan\Source\Repos\1708F\WindowsFormsApplication6\WindowsFormsApplication6\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
