@@ -29,7 +29,7 @@ namespace WcfCalculator
             SqlConnection _conn = new SqlConnection(@"Data Source=FACULTY18;Initial Catalog=1708F;Integrated Security=False;User ID=sa;Password=sa9;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             _conn.Open();
             SqlDataAdapter dt = new SqlDataAdapter("SELECT *FROM STD WHERE ID = @ID", _conn);
-            dt.SelectCommand.Parameters.AddWithValue("@ID", i);
+            dt.SelectCommand.Parameters.AddWithValue("@ID", i);//
             dt.Fill(_ds);
            
             return _ds;
