@@ -1,0 +1,26 @@
+﻿@model WebAppAptechMang.BATCHDAY
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BATCHDAY</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DAYS_CODE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAYS_CODE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DAYID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

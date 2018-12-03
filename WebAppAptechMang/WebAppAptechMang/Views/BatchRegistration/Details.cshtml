@@ -1,0 +1,74 @@
+﻿@model WebAppAptechMang.BATCH_REGISTRATION
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BATCH_REGISTRATION</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DAYID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAYID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ENROLL_STD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ENROLL_STD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.START_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.START_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EX_END_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EX_END_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.END_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.END_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REMARKS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REMARKS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ISACTIVE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISACTIVE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

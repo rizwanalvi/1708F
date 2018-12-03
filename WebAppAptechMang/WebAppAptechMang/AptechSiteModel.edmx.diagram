@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e4f4f58fd0e341d1910db2932f3532c3" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="APTECHDBModel.ACADMIC" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.APPROGRAM" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.ATTENDANCE" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.BATCH_REGISTRATION" Width="1.5" PointX="3.125" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.BATCHDAY" Width="1.5" PointX="8.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.CONTACTNO" Width="1.5" PointX="8.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.COURS" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.FACULTY" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.FACUTLY_BATCH" Width="1.5" PointX="6" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.MENU" Width="1.5" PointX="10.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.REGSKILL" Width="1.5" PointX="3" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.SEMESTER" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.SKILL" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.STD_LOG" Width="1.5" PointX="10.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.STUDENT_LOG" Width="1.5" PointX="12.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.STUDENTINFO" Width="1.5" PointX="6" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.sysdiagram" Width="1.5" PointX="12.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.USEROLE" Width="1.5" PointX="8.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.USER" Width="1.5" PointX="11" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.EXREPORT" Width="1.5" PointX="7.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.VMBACTH_FA" Width="1.5" PointX="9.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.VMBATCHINFO" Width="1.5" PointX="12.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.VMBATCHSKILL" Width="1.5" PointX="13.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.VMEXAMLOG" Width="1.5" PointX="11.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.VMSTDETAIL" Width="1.5" PointX="13.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.VMSTDLOG" Width="1.5" PointX="14.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.VMSTDUPDATE" Width="1.5" PointX="14.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="APTECHDBModel.VMTRANSFERLOG" Width="1.5" PointX="15.75" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="APTECHDBModel.FK__ATTENDANC__SEM_I__151B244E" ManuallyRouted="false" />
+        <AssociationConnector Association="APTECHDBModel.FK__ATTENDANCE__14270015" ManuallyRouted="false" />
+        <AssociationConnector Association="APTECHDBModel.FK__FACUTLY_BATCH__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="APTECHDBModel.FK__SKILLSNEW__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="APTECHDBModel.FK__STUDENTINFO__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="APTECHDBModel.FK__COURSES__SEM_ID__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="APTECHDBModel.FK__FACUTLY_BATCH__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="APTECHDBModel.FK__REGSKILL__SEM_ID__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="APTECHDBModel.FK__SKILLSNEW__SEM_I__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="APTECHDBModel.SEMID_SEMESTER_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="APTECHDBModel.FK__USERS__ROLE_ID__267ABA7A" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

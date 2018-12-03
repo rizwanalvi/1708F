@@ -1,0 +1,2394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="APTECHDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACADMICS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STD_ID" Type="int" />
+          <Property Name="PASS_YEAR" Type="int" />
+        </EntityType>
+        <EntityType Name="APPROGRAM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROG_NAME" Type="varchar(max)" />
+          <Property Name="SEM_CURRCULUM" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ATTENDANCE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STUDENT_ID" Type="int" />
+          <Property Name="STD_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="COURSE_ID" Type="int" />
+          <Property Name="COURSE_CODE" Type="varchar" MaxLength="50" />
+          <Property Name="BATCH_ID" Type="varchar" MaxLength="5" />
+          <Property Name="ATT_DATE" Type="date" />
+          <Property Name="SEM_ID" Type="int" />
+          <Property Name="SESS_PORTAL" Type="varchar" MaxLength="20" />
+          <Property Name="SESS_COURSE" Type="varchar" MaxLength="25" />
+          <Property Name="MARK_ATTEND" Type="varchar" MaxLength="1" />
+          <Property Name="FOLLOWUP" Type="varchar" MaxLength="50" />
+          <Property Name="ISFOLLOWUP" Type="int" />
+        </EntityType>
+        <EntityType Name="BATCH_REGISTRATION">
+          <Key>
+            <PropertyRef Name="BACTCH_NO" />
+            <PropertyRef Name="TIME_SLOT" />
+          </Key>
+          <Property Name="BACTCH_NO" Type="int" Nullable="false" />
+          <Property Name="TIME_SLOT" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="DAYID" Type="int" />
+          <Property Name="ENROLL_STD" Type="int" Nullable="false" />
+          <Property Name="START_DATE" Type="date" Nullable="false" />
+          <Property Name="EX_END_DATE" Type="date" Nullable="false" />
+          <Property Name="END_DATE" Type="date" Nullable="false" />
+          <Property Name="REMARKS" Type="varchar" MaxLength="100" />
+          <Property Name="ISACTIVE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BATCHDAYS">
+          <Key>
+            <PropertyRef Name="DAYID" />
+          </Key>
+          <Property Name="DAYID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DAYS_CODE" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="CONTACTNO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STD_ID" Type="int" />
+          <Property Name="REGIS_DATE" Type="date" />
+          <Property Name="PRIM_NUM" Type="varchar" MaxLength="12" />
+          <Property Name="SECON_NUM" Type="varchar" MaxLength="12" />
+          <Property Name="SMS_NUM" Type="varchar" MaxLength="12" />
+          <Property Name="OTHER_NUM" Type="varchar" MaxLength="15" />
+          <Property Name="STATUS" Type="int" Nullable="false" />
+          <Property Name="PROGRAM_ID" Type="int" Nullable="false" />
+          <Property Name="ISEXAMSET" Type="int" Nullable="false" />
+          <Property Name="REMARKS" Type="varchar" MaxLength="255" />
+          <Property Name="NO_ATTENDED" Type="int" />
+          <Property Name="TOTAL_CLASS" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'APTECHDB.dbo.COURSE_CPC6624' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="COURSE_CPC6624">
+          <Property Name="Class" Type="float" />
+          <Property Name="SESSION_ID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Concat Subjects" Type="nvarchar" MaxLength="255" />
+          <Property Name="Subjects" Type="nvarchar" MaxLength="255" />
+          <Property Name="Titles" Type="nvarchar" MaxLength="255" />
+          <Property Name="SEM_ID" Type="int" />
+        </EntityType>-->
+        <EntityType Name="COURSES">
+          <Key>
+            <PropertyRef Name="COURSE_ID" />
+            <PropertyRef Name="COURSE_CODE" />
+          </Key>
+          <Property Name="COURSE_ID" Type="int" Nullable="false" />
+          <Property Name="COURSE_TITLE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="COURSE_CODE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SEM_ID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'APTECHDB.dbo.DATAATABLE$' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="DATAATABLE$">
+          <Property Name="STD_ID" Type="float" />
+          <Property Name="BATCH_ID" Type="float" />
+          <Property Name="TIME_SLOT" Type="nvarchar" MaxLength="255" />
+          <Property Name="STD_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="STD_FNAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="Booking Confirmation No" Type="nvarchar" MaxLength="255" />
+          <Property Name="PROG_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="CURRM_ID" Type="float" />
+          <Property Name="EMAILID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Contact No# 1" Type="float" />
+          <Property Name="Contact No# 2" Type="float" />
+          <Property Name="Parents E-mail" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="Area" Type="nvarchar" MaxLength="255" />
+          <Property Name="DAYS_ID" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'APTECHDB.dbo.DATATABLE' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="DATATABLE">
+          <Property Name="STD_ID" Type="int" />
+          <Property Name="BATCH_ID" Type="int" />
+          <Property Name="TIME_SLOT" Type="varchar" MaxLength="2" />
+          <Property Name="STD_NAME" Type="varchar" MaxLength="255" />
+          <Property Name="STD_FNAME" Type="varchar" MaxLength="255" />
+          <Property Name="Booking Confirmation No" Type="varchar" MaxLength="255" />
+          <Property Name="PROG_NAME" Type="varchar" MaxLength="255" />
+          <Property Name="CURRM_ID" Type="int" />
+          <Property Name="EMAILID" Type="varchar" MaxLength="255" />
+          <Property Name="Contact No# 1" Type="int" />
+          <Property Name="Contact No# 2" Type="int" />
+          <Property Name="Parents E-mail" Type="varchar" MaxLength="255" />
+          <Property Name="Address" Type="text" />
+          <Property Name="Area" Type="varchar" MaxLength="255" />
+          <Property Name="DAYS_ID" Type="varchar" MaxLength="3" />
+        </EntityType>-->
+        <EntityType Name="FACULTY">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="FA_CODE" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="FA_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FA_FNAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FA_NIC" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="FA_GENDER" Type="int" />
+          <Property Name="FA_CODE" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="FA_EMAILID" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ISACTIVE" Type="int" />
+        </EntityType>
+        <EntityType Name="FACUTLY_BATCH">
+          <Key>
+            <PropertyRef Name="FA_BA_ID" />
+          </Key>
+          <Property Name="FA_BA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" />
+          <Property Name="FA_CODE" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="FA_BATCHNO" Type="int" />
+          <Property Name="FA_TIME_SLOT" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MENU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MTITLE" Type="varchar" MaxLength="50" />
+          <Property Name="MURL" Type="varchar" MaxLength="50" />
+          <Property Name="MICON" Type="varchar" MaxLength="50" />
+          <Property Name="ROLE_ID" Type="int" Nullable="false" />
+          <Property Name="ROUTE_ID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="REGSKILL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STD_ID" Type="int" />
+          <Property Name="SEM_ID" Type="int" />
+          <Property Name="SKILL" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="SEMESTERS">
+          <Key>
+            <PropertyRef Name="SEM_ID" />
+          </Key>
+          <Property Name="SEM_ID" Type="int" Nullable="false" />
+          <Property Name="SEM_TITLE" Type="varchar" MaxLength="50" />
+          <Property Name="SEM_CURRCULUM" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SKILLS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BATCH_NO" Type="int" />
+          <Property Name="TIME_SLOT" Type="varchar" MaxLength="1" />
+          <Property Name="SEM_ID" Type="int" />
+          <Property Name="CURRENT_SKILL" Type="varchar" MaxLength="10" />
+          <Property Name="NEXT_SKILL" Type="varchar" MaxLength="10" />
+          <Property Name="CURRI_ID" Type="int" />
+          <Property Name="START_DATE" Type="date" />
+          <Property Name="STC_SPACE" Type="int" />
+          <Property Name="FA_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="STD_LOG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STD_ID" Type="int" Nullable="false" />
+          <Property Name="TF_TO" Type="varchar" MaxLength="6" />
+          <Property Name="TF_FROM" Type="varchar" MaxLength="6" />
+          <Property Name="LOG_DATE" Type="date" />
+          <Property Name="TF_FORM" Type="image" />
+          <Property Name="TF_MONTH" Type="varchar" MaxLength="20" />
+          <Property Name="STD_STATUS" Type="varchar" MaxLength="20" />
+          <Property Name="STD_MONTH" Type="varchar" MaxLength="20" />
+          <Property Name="EXAM_E1" Type="date" />
+          <Property Name="SEM_ID" Type="int" />
+          <Property Name="EXM_MONTH" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'APTECHDB.dbo.STDDETAILS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="STDDETAILS">
+          <Property Name="S#No" Type="float" />
+          <Property Name="BATCHID" Type="nvarchar" MaxLength="255" />
+          <Property Name="EnrollmentNo" Type="nvarchar" MaxLength="255" />
+          <Property Name="BookingConfirmationNo" Type="nvarchar" MaxLength="255" />
+          <Property Name="COURSE_ENR" Type="nvarchar" MaxLength="255" />
+          <Property Name="STDNAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="FNAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="EMAILID" Type="nvarchar" MaxLength="255" />
+          <Property Name="PK_NUM" Type="nvarchar" MaxLength="255" />
+          <Property Name="SEC_NUM" Type="nvarchar" MaxLength="255" />
+          <Property Name="PAR_EMAILl" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="Area" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <EntityType Name="STUDENT_LOG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STD_ID" Type="int" Nullable="false" />
+          <Property Name="STATUS" Type="varchar" MaxLength="15" />
+          <Property Name="LOG_DATE" Type="date" />
+          <Property Name="LOG_MONTH" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'APTECHDB.dbo.StudentExamReport' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="StudentExamReport">
+          <Property Name="SI No#" Type="float" />
+          <Property Name="Center" Type="nvarchar" MaxLength="255" />
+          <Property Name="Center Code" Type="nvarchar" MaxLength="255" />
+          <Property Name="Enrollment No" Type="float" />
+          <Property Name="BC No#" Type="nvarchar" MaxLength="255" />
+          <Property Name="BC Date" Type="nvarchar" MaxLength="255" />
+          <Property Name=" Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Course Family" Type="nvarchar" MaxLength="255" />
+          <Property Name="Course Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="SemesterName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ExamType" Type="nvarchar" MaxLength="255" />
+          <Property Name="ExamName" Type="nvarchar" MaxLength="255" />
+          <Property Name="F13" Type="nvarchar" MaxLength="255" />
+          <Property Name="ExamCode" Type="float" />
+          <Property Name="ExamDate" Type="nvarchar" MaxLength="255" />
+          <Property Name="TotalMarks" Type="float" />
+          <Property Name="MarksObtained" Type="float" />
+          <Property Name="F18" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <EntityType Name="STUDENTINFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STD_ID" Type="int" Nullable="false" />
+          <Property Name="STD_NAME" Type="varchar(max)" Nullable="false" />
+          <Property Name="STD_FNAME" Type="varchar(max)" />
+          <Property Name="STD_PIC" Type="image" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="GENDER" Type="int" />
+          <Property Name="PROG_NAME" Type="varchar(max)" />
+          <Property Name="BATCH_NO" Type="int" />
+          <Property Name="TIME_SLOT" Type="varchar" MaxLength="1" />
+          <Property Name="EMAIL_ID" Type="varchar" MaxLength="255" />
+          <Property Name="PAR_EMAIL_ID" Type="varchar" MaxLength="255" />
+          <Property Name="HOME_ADDRE" Type="text" />
+          <Property Name="SEM_ID" Type="int" />
+          <Property Name="ISSTC" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="USEROLE">
+          <Key>
+            <PropertyRef Name="ROLE_ID" />
+          </Key>
+          <Property Name="ROLE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ROLENAME" Type="varchar" MaxLength="50" />
+          <Property Name="UROLE" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UNAME" Type="varchar" MaxLength="255" />
+          <Property Name="UPASS" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ROLE_ID" Type="int" />
+          <Property Name="EMP_ID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'APTECHDB.dbo.EXREPORT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EXREPORT">
+          <Key>
+            <PropertyRef Name="STD_ID" />
+            <PropertyRef Name="STD_NAME" />
+            <PropertyRef Name="BATCHID" />
+          </Key>
+          <Property Name="STD_ID" Type="int" Nullable="false" />
+          <Property Name="STD_NAME" Type="varchar(max)" Nullable="false" />
+          <Property Name="BATCHID" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="SEM_ID" Type="int" />
+          <Property Name="SemesterName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ExamCode" Type="float" />
+          <Property Name="ExamName" Type="nvarchar" MaxLength="255" />
+          <Property Name="MarksObtained" Type="float" />
+          <Property Name="ExamType" Type="nvarchar" MaxLength="255" />
+          <Property Name="ExamDate" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'APTECHDB.dbo.VMBACTH_FA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VMBACTH_FA">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="FA_NAME" />
+            <PropertyRef Name="FA_EMAILID" />
+            <PropertyRef Name="BATCHDATA" />
+            <PropertyRef Name="ENROLL_STD" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="FA_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FA_EMAILID" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="BATCHDATA" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="ENROLL_STD" Type="int" Nullable="false" />
+          <Property Name="DAYS_CODE" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'APTECHDB.dbo.VMBATCHINFO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VMBATCHINFO">
+          <Key>
+            <PropertyRef Name="STD_ID" />
+            <PropertyRef Name="STD_NAME" />
+          </Key>
+          <Property Name="STD_ID" Type="int" Nullable="false" />
+          <Property Name="STD_NAME" Type="varchar(max)" Nullable="false" />
+          <Property Name="BATCH_NO" Type="int" />
+          <Property Name="TIME_SLOT" Type="varchar" MaxLength="1" />
+          <Property Name="PROG_NAME" Type="varchar(max)" />
+          <Property Name="SEM_ID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'APTECHDB.dbo.VMBATCHSKILL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VMBATCHSKILL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BATCH_NO" Type="int" />
+          <Property Name="TIME_SLOT" Type="varchar" MaxLength="1" />
+          <Property Name="SEM_ID" Type="int" />
+          <Property Name="CURRENT_SKILL" Type="varchar" MaxLength="10" />
+          <Property Name="NEXT_SKILL" Type="varchar" MaxLength="10" />
+          <Property Name="CURRI_ID" Type="int" />
+          <Property Name="START_DATE" Type="date" />
+          <Property Name="STC_SPACE" Type="int" />
+          <Property Name="FA_ID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'APTECHDB.dbo.VMEXAMLOG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VMEXAMLOG">
+          <Key>
+            <PropertyRef Name="STD_ID" />
+          </Key>
+          <Property Name="STD_ID" Type="int" Nullable="false" />
+          <Property Name="STD_STATUS" Type="varchar" MaxLength="20" />
+          <Property Name="LOG_DATE" Type="date" />
+          <Property Name="EXAM_E1" Type="date" />
+          <Property Name="SEM_ID" Type="int" />
+          <Property Name="EXM_MONTH" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'APTECHDB.dbo.VMSTDETAILS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VMSTDETAILS">
+          <Key>
+            <PropertyRef Name="STD_ID" />
+            <PropertyRef Name="BATCHID" />
+            <PropertyRef Name="STD_NAME" />
+            <PropertyRef Name="STATUS" />
+          </Key>
+          <Property Name="STD_ID" Type="int" Nullable="false" />
+          <Property Name="BATCHID" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="STD_NAME" Type="varchar(max)" Nullable="false" />
+          <Property Name="STD_PIC" Type="image" />
+          <Property Name="GENDER" Type="int" />
+          <Property Name="SEM_TITLE" Type="varchar" MaxLength="50" />
+          <Property Name="PROG_NAME" Type="varchar(max)" />
+          <Property Name="EMAIL_ID" Type="varchar" MaxLength="255" />
+          <Property Name="SEM_ID" Type="int" />
+          <Property Name="ISSTC" Type="int" />
+          <Property Name="PRIM_NUM" Type="varchar" MaxLength="12" />
+          <Property Name="SECON_NUM" Type="varchar" MaxLength="12" />
+          <Property Name="SMS_NUM" Type="varchar" MaxLength="12" />
+          <Property Name="OTHER_NUM" Type="varchar" MaxLength="15" />
+          <Property Name="NO_ATTENDED" Type="int" />
+          <Property Name="STATUS" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'APTECHDB.dbo.VMSTDLOG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VMSTDLOG">
+          <Key>
+            <PropertyRef Name="STD_ID" />
+          </Key>
+          <Property Name="STD_ID" Type="int" Nullable="false" />
+          <Property Name="STD_STATUS" Type="varchar" MaxLength="20" />
+          <Property Name="LOG_DATE" Type="date" />
+          <Property Name="STD_MONTH" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'APTECHDB.dbo.VMSTDUPDATE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VMSTDUPDATE">
+          <Key>
+            <PropertyRef Name="STD_ID" />
+            <PropertyRef Name="STD_NAME" />
+            <PropertyRef Name="BATCHID" />
+            <PropertyRef Name="STATUS" />
+            <PropertyRef Name="ISEXAMSET" />
+          </Key>
+          <Property Name="STD_ID" Type="varchar" MaxLength="19" Nullable="false" />
+          <Property Name="STD_NAME" Type="varchar(max)" Nullable="false" />
+          <Property Name="BATCHID" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="PROG_NAME" Type="varchar(max)" />
+          <Property Name="SEM_ID" Type="int" />
+          <Property Name="STATUS" Type="int" Nullable="false" />
+          <Property Name="PRIM_NUM" Type="varchar" MaxLength="12" />
+          <Property Name="SECON_NUM" Type="varchar" MaxLength="12" />
+          <Property Name="OTHER_NUM" Type="varchar" MaxLength="15" />
+          <Property Name="ISEXAMSET" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'APTECHDB.dbo.VMTRANSFERLOG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VMTRANSFERLOG">
+          <Key>
+            <PropertyRef Name="STD_ID" />
+          </Key>
+          <Property Name="STD_ID" Type="int" Nullable="false" />
+          <Property Name="TF_FROM" Type="varchar" MaxLength="6" />
+          <Property Name="TF_TO" Type="varchar" MaxLength="6" />
+          <Property Name="LOG_DATE" Type="date" />
+          <Property Name="TF_MONTH" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__ACADMICS__STD_ID__6E01572D' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__ACADMICS__STD_ID__6E01572D" />-->
+        <Association Name="FK__ATTENDANC__SEM_I__151B244E">
+          <End Role="SEMESTERS" Type="Self.SEMESTERS" Multiplicity="0..1" />
+          <End Role="ATTENDANCE" Type="Self.ATTENDANCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEMESTERS">
+              <PropertyRef Name="SEM_ID" />
+            </Principal>
+            <Dependent Role="ATTENDANCE">
+              <PropertyRef Name="SEM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ATTENDANCE__14270015">
+          <End Role="COURSES" Type="Self.COURSES" Multiplicity="0..1" />
+          <End Role="ATTENDANCE" Type="Self.ATTENDANCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COURSES">
+              <PropertyRef Name="COURSE_ID" />
+              <PropertyRef Name="COURSE_CODE" />
+            </Principal>
+            <Dependent Role="ATTENDANCE">
+              <PropertyRef Name="COURSE_ID" />
+              <PropertyRef Name="COURSE_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__CONTACTNO__STD_I__6B24EA82' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__CONTACTNO__STD_I__6B24EA82" />-->
+        <Association Name="FK__COURSES__SEM_ID__2E1BDC42">
+          <End Role="SEMESTERS" Type="Self.SEMESTERS" Multiplicity="0..1" />
+          <End Role="COURSES" Type="Self.COURSES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEMESTERS">
+              <PropertyRef Name="SEM_ID" />
+            </Principal>
+            <Dependent Role="COURSES">
+              <PropertyRef Name="SEM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FACUTLY_BATCH__4222D4EF">
+          <End Role="FACULTY" Type="Self.FACULTY" Multiplicity="0..1" />
+          <End Role="FACUTLY_BATCH" Type="Self.FACUTLY_BATCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACULTY">
+              <PropertyRef Name="ID" />
+              <PropertyRef Name="FA_CODE" />
+            </Principal>
+            <Dependent Role="FACUTLY_BATCH">
+              <PropertyRef Name="ID" />
+              <PropertyRef Name="FA_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FACUTLY_BATCH__4316F928">
+          <End Role="BATCH_REGISTRATION" Type="Self.BATCH_REGISTRATION" Multiplicity="0..1" />
+          <End Role="FACUTLY_BATCH" Type="Self.FACUTLY_BATCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BATCH_REGISTRATION">
+              <PropertyRef Name="BACTCH_NO" />
+              <PropertyRef Name="TIME_SLOT" />
+            </Principal>
+            <Dependent Role="FACUTLY_BATCH">
+              <PropertyRef Name="FA_BATCHNO" />
+              <PropertyRef Name="FA_TIME_SLOT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REGSKILL__SEM_ID__71D1E811">
+          <End Role="SEMESTERS" Type="Self.SEMESTERS" Multiplicity="0..1" />
+          <End Role="REGSKILL" Type="Self.REGSKILL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEMESTERS">
+              <PropertyRef Name="SEM_ID" />
+            </Principal>
+            <Dependent Role="REGSKILL">
+              <PropertyRef Name="SEM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__REGSKILL__STD_ID__70DDC3D8' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__REGSKILL__STD_ID__70DDC3D8" />-->
+        <Association Name="FK__SKILLSNEW__49C3F6B7">
+          <End Role="BATCH_REGISTRATION" Type="Self.BATCH_REGISTRATION" Multiplicity="0..1" />
+          <End Role="SKILLS" Type="Self.SKILLS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BATCH_REGISTRATION">
+              <PropertyRef Name="BACTCH_NO" />
+              <PropertyRef Name="TIME_SLOT" />
+            </Principal>
+            <Dependent Role="SKILLS">
+              <PropertyRef Name="BATCH_NO" />
+              <PropertyRef Name="TIME_SLOT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SKILLSNEW__SEM_I__4AB81AF0">
+          <End Role="SEMESTERS" Type="Self.SEMESTERS" Multiplicity="0..1" />
+          <End Role="SKILLS" Type="Self.SKILLS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEMESTERS">
+              <PropertyRef Name="SEM_ID" />
+            </Principal>
+            <Dependent Role="SKILLS">
+              <PropertyRef Name="SEM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__STUDENTINFO__68487DD7">
+          <End Role="BATCH_REGISTRATION" Type="Self.BATCH_REGISTRATION" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="STUDENTINFO" Type="Self.STUDENTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BATCH_REGISTRATION">
+              <PropertyRef Name="BACTCH_NO" />
+              <PropertyRef Name="TIME_SLOT" />
+            </Principal>
+            <Dependent Role="STUDENTINFO">
+              <PropertyRef Name="BATCH_NO" />
+              <PropertyRef Name="TIME_SLOT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERS__ROLE_ID__267ABA7A">
+          <End Role="USEROLE" Type="Self.USEROLE" Multiplicity="0..1" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USEROLE">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SEMID_SEMESTER_FK">
+          <End Role="SEMESTERS" Type="Self.SEMESTERS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="STUDENTINFO" Type="Self.STUDENTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEMESTERS">
+              <PropertyRef Name="SEM_ID" />
+            </Principal>
+            <Dependent Role="STUDENTINFO">
+              <PropertyRef Name="SEM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="GetAcadmicHeadMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spAddNewBatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BATCHNO" Type="int" Mode="In" />
+          <Parameter Name="TIMESLOT" Type="varchar" Mode="In" />
+          <Parameter Name="DAYID" Type="int" Mode="In" />
+          <Parameter Name="STDTARGET" Type="int" Mode="In" />
+          <Parameter Name="STARTDATE" Type="date" Mode="In" />
+          <Parameter Name="EXENDDATE" Type="date" Mode="In" />
+          <Parameter Name="ENDDATE" Type="date" Mode="In" />
+          <Parameter Name="FAID" Type="int" Mode="In" />
+          <Parameter Name="FACODE" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spAddUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UNAME" Type="varchar" Mode="In" />
+          <Parameter Name="UPASS" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ROLEID" Type="int" Mode="In" />
+          <Parameter Name="FANAME" Type="varchar" Mode="In" />
+          <Parameter Name="FNAME" Type="varchar" Mode="In" />
+          <Parameter Name="FANIC" Type="varchar" Mode="In" />
+          <Parameter Name="FACODE" Type="varchar" Mode="In" />
+          <Parameter Name="GENDER" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spAttendanceMWF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spAttendanceTTS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spBatchList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spBatchList01" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spBatchMerger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TOBATCHNO" Type="varchar" Mode="In" />
+          <Parameter Name="FROMBATCHNO" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spBatchTransferBySTDID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STDID" Type="int" Mode="In" />
+          <Parameter Name="BATCHID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spChangeBatchFaculty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BATCHID" Type="varchar" Mode="In" />
+          <Parameter Name="FAID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spChangePassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="UPASS" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="spChangePasswordByEMPID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="UPASS" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="spExamReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BATCHID" Type="varchar" Mode="In" />
+          <Parameter Name="SEMNAME" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spFacultyBatchLoad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spFacultyBatchLoadById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FACULTYID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spFollowUpByBatchID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BATCHID" Type="varchar" Mode="In" />
+          <Parameter Name="DATE" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spGetAcadmicHeadMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetBatchByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BATCHID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spGetBatchStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetFacultyMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetGroupLeaderMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetListOfFaculty_Batches" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetStudentCountBatchWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BATCHID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spLsitOfActiveEmp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spStudentRegistration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STD_ID" Type="int" Mode="In" />
+          <Parameter Name="STD_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="STD_FNAME" Type="varchar" Mode="In" />
+          <Parameter Name="STD_PIC" Type="image" Mode="In" />
+          <Parameter Name="DOB" Type="date" Mode="In" />
+          <Parameter Name="GENDER" Type="int" Mode="In" />
+          <Parameter Name="PROG_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="BATCH_NO" Type="int" Mode="In" />
+          <Parameter Name="TIME_SLOT" Type="varchar" Mode="In" />
+          <Parameter Name="EMAIL_ID" Type="varchar" Mode="In" />
+          <Parameter Name="PAR_EMAIL_ID" Type="varchar" Mode="In" />
+          <Parameter Name="HOME_ADDRE" Type="varchar(max)" Mode="In" />
+          <Parameter Name="SEM_ID" Type="int" Mode="In" />
+          <Parameter Name="REGIS_DATE" Type="date" Mode="In" />
+          <Parameter Name="PRIM_NUM" Type="varchar" Mode="In" />
+          <Parameter Name="SECON_NUM" Type="varchar" Mode="In" />
+          <Parameter Name="SMS_NUM" Type="varchar" Mode="In" />
+          <Parameter Name="OTHER_NUM" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spUpdateSemesterIdBatchWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BATCHTIME" Type="varchar" Mode="In" />
+          <Parameter Name="SEM_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUpdateStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STD_ID" Type="int" Mode="In" />
+          <Parameter Name="STD_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="STD_FNAME" Type="varchar" Mode="In" />
+          <Parameter Name="STD_PIC" Type="image" Mode="In" />
+          <Parameter Name="DOB" Type="date" Mode="In" />
+          <Parameter Name="GENDER" Type="int" Mode="In" />
+          <Parameter Name="PROG_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="BATCH_NO" Type="int" Mode="In" />
+          <Parameter Name="TIME_SLOT" Type="varchar" Mode="In" />
+          <Parameter Name="EMAIL_ID" Type="varchar" Mode="In" />
+          <Parameter Name="PAR_EMAIL_ID" Type="varchar" Mode="In" />
+          <Parameter Name="HOME_ADDRE" Type="varchar(max)" Mode="In" />
+          <Parameter Name="SEM_ID" Type="int" Mode="In" />
+          <Parameter Name="NO_ATTENDED" Type="int" Mode="In" />
+          <Parameter Name="REGIS_DATE" Type="date" Mode="In" />
+          <Parameter Name="PRIM_NUM" Type="varchar" Mode="In" />
+          <Parameter Name="SECON_NUM" Type="varchar" Mode="In" />
+          <Parameter Name="SMS_NUM" Type="varchar" Mode="In" />
+          <Parameter Name="OTHER_NUM" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spUpdateStudent01" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STD_ID" Type="int" Mode="In" />
+          <Parameter Name="PROG_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="EMAIL_ID" Type="varchar" Mode="In" />
+          <Parameter Name="PRIM_NUM" Type="varchar" Mode="In" />
+          <Parameter Name="SECON_NUM" Type="varchar" Mode="In" />
+          <Parameter Name="SMS_NUM" Type="varchar" Mode="In" />
+          <Parameter Name="NO_ATTENDED" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUpdateStudentCountByBatchID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BATCHID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spUpdateStudentCountInBatches" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spUpdateStudentCountWithZero" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spUpdateStudentStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STATUSCODE" Type="varchar" Mode="In" />
+          <Parameter Name="STDID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="APTECHDBModelStoreContainer">
+          <EntitySet Name="ACADMICS" EntityType="Self.ACADMICS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APPROGRAM" EntityType="Self.APPROGRAM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ATTENDANCE" EntityType="Self.ATTENDANCE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BATCH_REGISTRATION" EntityType="Self.BATCH_REGISTRATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BATCHDAYS" EntityType="Self.BATCHDAYS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONTACTNO" EntityType="Self.CONTACTNO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COURSES" EntityType="Self.COURSES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FACULTY" EntityType="Self.FACULTY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FACUTLY_BATCH" EntityType="Self.FACUTLY_BATCH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MENU" EntityType="Self.MENU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REGSKILL" EntityType="Self.REGSKILL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEMESTERS" EntityType="Self.SEMESTERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SKILLS" EntityType="Self.SKILLS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STD_LOG" EntityType="Self.STD_LOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STUDENT_LOG" EntityType="Self.STUDENT_LOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STUDENTINFO" EntityType="Self.STUDENTINFO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USEROLE" EntityType="Self.USEROLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EXREPORT" EntityType="Self.EXREPORT" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EXREPORT].[STD_ID] AS [STD_ID], 
+    [EXREPORT].[STD_NAME] AS [STD_NAME], 
+    [EXREPORT].[BATCHID] AS [BATCHID], 
+    [EXREPORT].[SEM_ID] AS [SEM_ID], 
+    [EXREPORT].[SemesterName] AS [SemesterName], 
+    [EXREPORT].[ExamCode] AS [ExamCode], 
+    [EXREPORT].[ExamName] AS [ExamName], 
+    [EXREPORT].[MarksObtained] AS [MarksObtained], 
+    [EXREPORT].[ExamType] AS [ExamType], 
+    [EXREPORT].[ExamDate] AS [ExamDate]
+    FROM [dbo].[EXREPORT] AS [EXREPORT]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VMBACTH_FA" EntityType="Self.VMBACTH_FA" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VMBACTH_FA].[ID] AS [ID], 
+    [VMBACTH_FA].[FA_NAME] AS [FA_NAME], 
+    [VMBACTH_FA].[FA_EMAILID] AS [FA_EMAILID], 
+    [VMBACTH_FA].[BATCHDATA] AS [BATCHDATA], 
+    [VMBACTH_FA].[ENROLL_STD] AS [ENROLL_STD], 
+    [VMBACTH_FA].[DAYS_CODE] AS [DAYS_CODE]
+    FROM [dbo].[VMBACTH_FA] AS [VMBACTH_FA]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VMBATCHINFO" EntityType="Self.VMBATCHINFO" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VMBATCHINFO].[STD_ID] AS [STD_ID], 
+    [VMBATCHINFO].[STD_NAME] AS [STD_NAME], 
+    [VMBATCHINFO].[BATCH_NO] AS [BATCH_NO], 
+    [VMBATCHINFO].[TIME_SLOT] AS [TIME_SLOT], 
+    [VMBATCHINFO].[PROG_NAME] AS [PROG_NAME], 
+    [VMBATCHINFO].[SEM_ID] AS [SEM_ID]
+    FROM [dbo].[VMBATCHINFO] AS [VMBATCHINFO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VMBATCHSKILL" EntityType="Self.VMBATCHSKILL" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VMBATCHSKILL].[ID] AS [ID], 
+    [VMBATCHSKILL].[BATCH_NO] AS [BATCH_NO], 
+    [VMBATCHSKILL].[TIME_SLOT] AS [TIME_SLOT], 
+    [VMBATCHSKILL].[SEM_ID] AS [SEM_ID], 
+    [VMBATCHSKILL].[CURRENT_SKILL] AS [CURRENT_SKILL], 
+    [VMBATCHSKILL].[NEXT_SKILL] AS [NEXT_SKILL], 
+    [VMBATCHSKILL].[CURRI_ID] AS [CURRI_ID], 
+    [VMBATCHSKILL].[START_DATE] AS [START_DATE], 
+    [VMBATCHSKILL].[STC_SPACE] AS [STC_SPACE], 
+    [VMBATCHSKILL].[FA_ID] AS [FA_ID]
+    FROM [dbo].[VMBATCHSKILL] AS [VMBATCHSKILL]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VMEXAMLOG" EntityType="Self.VMEXAMLOG" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VMEXAMLOG].[STD_ID] AS [STD_ID], 
+    [VMEXAMLOG].[STD_STATUS] AS [STD_STATUS], 
+    [VMEXAMLOG].[LOG_DATE] AS [LOG_DATE], 
+    [VMEXAMLOG].[EXAM_E1] AS [EXAM_E1], 
+    [VMEXAMLOG].[SEM_ID] AS [SEM_ID], 
+    [VMEXAMLOG].[EXM_MONTH] AS [EXM_MONTH]
+    FROM [dbo].[VMEXAMLOG] AS [VMEXAMLOG]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VMSTDETAILS" EntityType="Self.VMSTDETAILS" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VMSTDETAILS].[STD_ID] AS [STD_ID], 
+    [VMSTDETAILS].[BATCHID] AS [BATCHID], 
+    [VMSTDETAILS].[STD_NAME] AS [STD_NAME], 
+    [VMSTDETAILS].[STD_PIC] AS [STD_PIC], 
+    [VMSTDETAILS].[GENDER] AS [GENDER], 
+    [VMSTDETAILS].[SEM_TITLE] AS [SEM_TITLE], 
+    [VMSTDETAILS].[PROG_NAME] AS [PROG_NAME], 
+    [VMSTDETAILS].[EMAIL_ID] AS [EMAIL_ID], 
+    [VMSTDETAILS].[SEM_ID] AS [SEM_ID], 
+    [VMSTDETAILS].[ISSTC] AS [ISSTC], 
+    [VMSTDETAILS].[PRIM_NUM] AS [PRIM_NUM], 
+    [VMSTDETAILS].[SECON_NUM] AS [SECON_NUM], 
+    [VMSTDETAILS].[SMS_NUM] AS [SMS_NUM], 
+    [VMSTDETAILS].[OTHER_NUM] AS [OTHER_NUM], 
+    [VMSTDETAILS].[NO_ATTENDED] AS [NO_ATTENDED], 
+    [VMSTDETAILS].[STATUS] AS [STATUS]
+    FROM [dbo].[VMSTDETAILS] AS [VMSTDETAILS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VMSTDLOG" EntityType="Self.VMSTDLOG" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VMSTDLOG].[STD_ID] AS [STD_ID], 
+    [VMSTDLOG].[STD_STATUS] AS [STD_STATUS], 
+    [VMSTDLOG].[LOG_DATE] AS [LOG_DATE], 
+    [VMSTDLOG].[STD_MONTH] AS [STD_MONTH]
+    FROM [dbo].[VMSTDLOG] AS [VMSTDLOG]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VMSTDUPDATE" EntityType="Self.VMSTDUPDATE" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VMSTDUPDATE].[STD_ID] AS [STD_ID], 
+    [VMSTDUPDATE].[STD_NAME] AS [STD_NAME], 
+    [VMSTDUPDATE].[BATCHID] AS [BATCHID], 
+    [VMSTDUPDATE].[PROG_NAME] AS [PROG_NAME], 
+    [VMSTDUPDATE].[SEM_ID] AS [SEM_ID], 
+    [VMSTDUPDATE].[STATUS] AS [STATUS], 
+    [VMSTDUPDATE].[PRIM_NUM] AS [PRIM_NUM], 
+    [VMSTDUPDATE].[SECON_NUM] AS [SECON_NUM], 
+    [VMSTDUPDATE].[OTHER_NUM] AS [OTHER_NUM], 
+    [VMSTDUPDATE].[ISEXAMSET] AS [ISEXAMSET]
+    FROM [dbo].[VMSTDUPDATE] AS [VMSTDUPDATE]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VMTRANSFERLOG" EntityType="Self.VMTRANSFERLOG" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VMTRANSFERLOG].[STD_ID] AS [STD_ID], 
+    [VMTRANSFERLOG].[TF_FROM] AS [TF_FROM], 
+    [VMTRANSFERLOG].[TF_TO] AS [TF_TO], 
+    [VMTRANSFERLOG].[LOG_DATE] AS [LOG_DATE], 
+    [VMTRANSFERLOG].[TF_MONTH] AS [TF_MONTH]
+    FROM [dbo].[VMTRANSFERLOG] AS [VMTRANSFERLOG]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__ATTENDANC__SEM_I__151B244E" Association="Self.FK__ATTENDANC__SEM_I__151B244E">
+            <End Role="SEMESTERS" EntitySet="SEMESTERS" />
+            <End Role="ATTENDANCE" EntitySet="ATTENDANCE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ATTENDANCE__14270015" Association="Self.FK__ATTENDANCE__14270015">
+            <End Role="COURSES" EntitySet="COURSES" />
+            <End Role="ATTENDANCE" EntitySet="ATTENDANCE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COURSES__SEM_ID__2E1BDC42" Association="Self.FK__COURSES__SEM_ID__2E1BDC42">
+            <End Role="SEMESTERS" EntitySet="SEMESTERS" />
+            <End Role="COURSES" EntitySet="COURSES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FACUTLY_BATCH__4222D4EF" Association="Self.FK__FACUTLY_BATCH__4222D4EF">
+            <End Role="FACULTY" EntitySet="FACULTY" />
+            <End Role="FACUTLY_BATCH" EntitySet="FACUTLY_BATCH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FACUTLY_BATCH__4316F928" Association="Self.FK__FACUTLY_BATCH__4316F928">
+            <End Role="BATCH_REGISTRATION" EntitySet="BATCH_REGISTRATION" />
+            <End Role="FACUTLY_BATCH" EntitySet="FACUTLY_BATCH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REGSKILL__SEM_ID__71D1E811" Association="Self.FK__REGSKILL__SEM_ID__71D1E811">
+            <End Role="SEMESTERS" EntitySet="SEMESTERS" />
+            <End Role="REGSKILL" EntitySet="REGSKILL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SKILLSNEW__49C3F6B7" Association="Self.FK__SKILLSNEW__49C3F6B7">
+            <End Role="BATCH_REGISTRATION" EntitySet="BATCH_REGISTRATION" />
+            <End Role="SKILLS" EntitySet="SKILLS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SKILLSNEW__SEM_I__4AB81AF0" Association="Self.FK__SKILLSNEW__SEM_I__4AB81AF0">
+            <End Role="SEMESTERS" EntitySet="SEMESTERS" />
+            <End Role="SKILLS" EntitySet="SKILLS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__STUDENTINFO__68487DD7" Association="Self.FK__STUDENTINFO__68487DD7">
+            <End Role="BATCH_REGISTRATION" EntitySet="BATCH_REGISTRATION" />
+            <End Role="STUDENTINFO" EntitySet="STUDENTINFO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERS__ROLE_ID__267ABA7A" Association="Self.FK__USERS__ROLE_ID__267ABA7A">
+            <End Role="USEROLE" EntitySet="USEROLE" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
+          <AssociationSet Name="SEMID_SEMESTER_FK" Association="Self.SEMID_SEMESTER_FK">
+            <End Role="SEMESTERS" EntitySet="SEMESTERS" />
+            <End Role="STUDENTINFO" EntitySet="STUDENTINFO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="APTECHDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACADMIC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STD_ID" Type="Int32" />
+          <Property Name="PASS_YEAR" Type="Int32" />
+        </EntityType>
+        <EntityType Name="APPROGRAM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROG_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SEM_CURRCULUM" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ATTENDANCE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STUDENT_ID" Type="Int32" />
+          <Property Name="STD_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COURSE_ID" Type="Int32" />
+          <Property Name="COURSE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BATCH_ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ATT_DATE" Type="DateTime" Precision="0" />
+          <Property Name="SEM_ID" Type="Int32" />
+          <Property Name="SESS_PORTAL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SESS_COURSE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="MARK_ATTEND" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="FOLLOWUP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ISFOLLOWUP" Type="Int32" />
+          <NavigationProperty Name="SEMESTER" Relationship="Self.FK__ATTENDANC__SEM_I__151B244E" FromRole="ATTENDANCE" ToRole="SEMESTERS" />
+          <NavigationProperty Name="COURS" Relationship="Self.FK__ATTENDANCE__14270015" FromRole="ATTENDANCE" ToRole="COURSES" />
+        </EntityType>
+        <EntityType Name="BATCH_REGISTRATION">
+          <Key>
+            <PropertyRef Name="BACTCH_NO" />
+            <PropertyRef Name="TIME_SLOT" />
+          </Key>
+          <Property Name="BACTCH_NO" Type="Int32" Nullable="false" />
+          <Property Name="TIME_SLOT" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DAYID" Type="Int32" />
+          <Property Name="ENROLL_STD" Type="Int32" Nullable="false" />
+          <Property Name="START_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EX_END_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="END_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="REMARKS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ISACTIVE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FACUTLY_BATCH" Relationship="Self.FK__FACUTLY_BATCH__4316F928" FromRole="BATCH_REGISTRATION" ToRole="FACUTLY_BATCH" />
+          <NavigationProperty Name="SKILLS" Relationship="Self.FK__SKILLSNEW__49C3F6B7" FromRole="BATCH_REGISTRATION" ToRole="SKILLS" />
+          <NavigationProperty Name="STUDENTINFOes" Relationship="Self.FK__STUDENTINFO__68487DD7" FromRole="BATCH_REGISTRATION" ToRole="STUDENTINFO" />
+        </EntityType>
+        <EntityType Name="BATCHDAY">
+          <Key>
+            <PropertyRef Name="DAYID" />
+          </Key>
+          <Property Name="DAYID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DAYS_CODE" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CONTACTNO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STD_ID" Type="Int32" />
+          <Property Name="REGIS_DATE" Type="DateTime" Precision="0" />
+          <Property Name="PRIM_NUM" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="SECON_NUM" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="SMS_NUM" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="OTHER_NUM" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="Int32" Nullable="false" />
+          <Property Name="PROGRAM_ID" Type="Int32" Nullable="false" />
+          <Property Name="ISEXAMSET" Type="Int32" Nullable="false" />
+          <Property Name="REMARKS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NO_ATTENDED" Type="Int32" />
+          <Property Name="TOTAL_CLASS" Type="Int32" />
+        </EntityType>
+        <EntityType Name="COURS">
+          <Key>
+            <PropertyRef Name="COURSE_ID" />
+            <PropertyRef Name="COURSE_CODE" />
+          </Key>
+          <Property Name="COURSE_ID" Type="Int32" Nullable="false" />
+          <Property Name="COURSE_TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COURSE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SEM_ID" Type="Int32" />
+          <NavigationProperty Name="ATTENDANCEs" Relationship="Self.FK__ATTENDANCE__14270015" FromRole="COURSES" ToRole="ATTENDANCE" />
+          <NavigationProperty Name="SEMESTER" Relationship="Self.FK__COURSES__SEM_ID__2E1BDC42" FromRole="COURSES" ToRole="SEMESTERS" />
+        </EntityType>
+        <EntityType Name="FACULTY">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="FA_CODE" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="FA_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FA_FNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FA_NIC" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FA_GENDER" Type="Int32" />
+          <Property Name="FA_CODE" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FA_EMAILID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ISACTIVE" Type="Int32" />
+          <NavigationProperty Name="FACUTLY_BATCH" Relationship="Self.FK__FACUTLY_BATCH__4222D4EF" FromRole="FACULTY" ToRole="FACUTLY_BATCH" />
+        </EntityType>
+        <EntityType Name="FACUTLY_BATCH">
+          <Key>
+            <PropertyRef Name="FA_BA_ID" />
+          </Key>
+          <Property Name="FA_BA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" />
+          <Property Name="FA_CODE" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FA_BATCHNO" Type="Int32" />
+          <Property Name="FA_TIME_SLOT" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BATCH_REGISTRATION" Relationship="Self.FK__FACUTLY_BATCH__4316F928" FromRole="FACUTLY_BATCH" ToRole="BATCH_REGISTRATION" />
+          <NavigationProperty Name="FACULTY" Relationship="Self.FK__FACUTLY_BATCH__4222D4EF" FromRole="FACUTLY_BATCH" ToRole="FACULTY" />
+        </EntityType>
+        <EntityType Name="MENU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MTITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MURL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MICON" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ROLE_ID" Type="Int32" Nullable="false" />
+          <Property Name="ROUTE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="REGSKILL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STD_ID" Type="Int32" />
+          <Property Name="SEM_ID" Type="Int32" />
+          <Property Name="SKILL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SEMESTER" Relationship="Self.FK__REGSKILL__SEM_ID__71D1E811" FromRole="REGSKILL" ToRole="SEMESTERS" />
+        </EntityType>
+        <EntityType Name="SEMESTER">
+          <Key>
+            <PropertyRef Name="SEM_ID" />
+          </Key>
+          <Property Name="SEM_ID" Type="Int32" Nullable="false" />
+          <Property Name="SEM_TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SEM_CURRCULUM" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ATTENDANCEs" Relationship="Self.FK__ATTENDANC__SEM_I__151B244E" FromRole="SEMESTERS" ToRole="ATTENDANCE" />
+          <NavigationProperty Name="COURSES" Relationship="Self.FK__COURSES__SEM_ID__2E1BDC42" FromRole="SEMESTERS" ToRole="COURSES" />
+          <NavigationProperty Name="REGSKILLs" Relationship="Self.FK__REGSKILL__SEM_ID__71D1E811" FromRole="SEMESTERS" ToRole="REGSKILL" />
+          <NavigationProperty Name="SKILLS" Relationship="Self.FK__SKILLSNEW__SEM_I__4AB81AF0" FromRole="SEMESTERS" ToRole="SKILLS" />
+          <NavigationProperty Name="STUDENTINFOes" Relationship="Self.SEMID_SEMESTER_FK" FromRole="SEMESTERS" ToRole="STUDENTINFO" />
+        </EntityType>
+        <EntityType Name="SKILL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BATCH_NO" Type="Int32" />
+          <Property Name="TIME_SLOT" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="SEM_ID" Type="Int32" />
+          <Property Name="CURRENT_SKILL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NEXT_SKILL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CURRI_ID" Type="Int32" />
+          <Property Name="START_DATE" Type="DateTime" Precision="0" />
+          <Property Name="STC_SPACE" Type="Int32" />
+          <Property Name="FA_ID" Type="Int32" />
+          <NavigationProperty Name="BATCH_REGISTRATION" Relationship="Self.FK__SKILLSNEW__49C3F6B7" FromRole="SKILLS" ToRole="BATCH_REGISTRATION" />
+          <NavigationProperty Name="SEMESTER" Relationship="Self.FK__SKILLSNEW__SEM_I__4AB81AF0" FromRole="SKILLS" ToRole="SEMESTERS" />
+        </EntityType>
+        <EntityType Name="STD_LOG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STD_ID" Type="Int32" Nullable="false" />
+          <Property Name="TF_TO" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="TF_FROM" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="LOG_DATE" Type="DateTime" Precision="0" />
+          <Property Name="TF_FORM" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="TF_MONTH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="STD_STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="STD_MONTH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EXAM_E1" Type="DateTime" Precision="0" />
+          <Property Name="SEM_ID" Type="Int32" />
+          <Property Name="EXM_MONTH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="STUDENT_LOG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STD_ID" Type="Int32" Nullable="false" />
+          <Property Name="STATUS" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="LOG_DATE" Type="DateTime" Precision="0" />
+          <Property Name="LOG_MONTH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="STUDENTINFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STD_ID" Type="Int32" Nullable="false" />
+          <Property Name="STD_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STD_FNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="STD_PIC" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="GENDER" Type="Int32" />
+          <Property Name="PROG_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BATCH_NO" Type="Int32" />
+          <Property Name="TIME_SLOT" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL_ID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PAR_EMAIL_ID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HOME_ADDRE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SEM_ID" Type="Int32" />
+          <Property Name="ISSTC" Type="Int32" />
+          <NavigationProperty Name="BATCH_REGISTRATION" Relationship="Self.FK__STUDENTINFO__68487DD7" FromRole="STUDENTINFO" ToRole="BATCH_REGISTRATION" />
+          <NavigationProperty Name="SEMESTER" Relationship="Self.SEMID_SEMESTER_FK" FromRole="STUDENTINFO" ToRole="SEMESTERS" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="USEROLE">
+          <Key>
+            <PropertyRef Name="ROLE_ID" />
+          </Key>
+          <Property Name="ROLE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ROLENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UROLE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK__USERS__ROLE_ID__267ABA7A" FromRole="USEROLE" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UPASS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ROLE_ID" Type="Int32" />
+          <Property Name="EMP_ID" Type="Int32" />
+          <NavigationProperty Name="USEROLE" Relationship="Self.FK__USERS__ROLE_ID__267ABA7A" FromRole="USERS" ToRole="USEROLE" />
+        </EntityType>
+        <EntityType Name="EXREPORT">
+          <Key>
+            <PropertyRef Name="STD_ID" />
+            <PropertyRef Name="STD_NAME" />
+            <PropertyRef Name="BATCHID" />
+          </Key>
+          <Property Name="STD_ID" Type="Int32" Nullable="false" />
+          <Property Name="STD_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BATCHID" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SEM_ID" Type="Int32" />
+          <Property Name="SemesterName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ExamCode" Type="Double" />
+          <Property Name="ExamName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MarksObtained" Type="Double" />
+          <Property Name="ExamType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ExamDate" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VMBACTH_FA">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="FA_NAME" />
+            <PropertyRef Name="FA_EMAILID" />
+            <PropertyRef Name="BATCHDATA" />
+            <PropertyRef Name="ENROLL_STD" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="FA_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FA_EMAILID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BATCHDATA" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ENROLL_STD" Type="Int32" Nullable="false" />
+          <Property Name="DAYS_CODE" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VMBATCHINFO">
+          <Key>
+            <PropertyRef Name="STD_ID" />
+            <PropertyRef Name="STD_NAME" />
+          </Key>
+          <Property Name="STD_ID" Type="Int32" Nullable="false" />
+          <Property Name="STD_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BATCH_NO" Type="Int32" />
+          <Property Name="TIME_SLOT" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="PROG_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SEM_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VMBATCHSKILL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BATCH_NO" Type="Int32" />
+          <Property Name="TIME_SLOT" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="SEM_ID" Type="Int32" />
+          <Property Name="CURRENT_SKILL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NEXT_SKILL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CURRI_ID" Type="Int32" />
+          <Property Name="START_DATE" Type="DateTime" Precision="0" />
+          <Property Name="STC_SPACE" Type="Int32" />
+          <Property Name="FA_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VMEXAMLOG">
+          <Key>
+            <PropertyRef Name="STD_ID" />
+          </Key>
+          <Property Name="STD_ID" Type="Int32" Nullable="false" />
+          <Property Name="STD_STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LOG_DATE" Type="DateTime" Precision="0" />
+          <Property Name="EXAM_E1" Type="DateTime" Precision="0" />
+          <Property Name="SEM_ID" Type="Int32" />
+          <Property Name="EXM_MONTH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VMSTDETAIL">
+          <Key>
+            <PropertyRef Name="STD_ID" />
+            <PropertyRef Name="BATCHID" />
+            <PropertyRef Name="STD_NAME" />
+            <PropertyRef Name="STATUS" />
+          </Key>
+          <Property Name="STD_ID" Type="Int32" Nullable="false" />
+          <Property Name="BATCHID" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STD_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STD_PIC" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="GENDER" Type="Int32" />
+          <Property Name="SEM_TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PROG_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL_ID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SEM_ID" Type="Int32" />
+          <Property Name="ISSTC" Type="Int32" />
+          <Property Name="PRIM_NUM" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="SECON_NUM" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="SMS_NUM" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="OTHER_NUM" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NO_ATTENDED" Type="Int32" />
+          <Property Name="STATUS" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VMSTDLOG">
+          <Key>
+            <PropertyRef Name="STD_ID" />
+          </Key>
+          <Property Name="STD_ID" Type="Int32" Nullable="false" />
+          <Property Name="STD_STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LOG_DATE" Type="DateTime" Precision="0" />
+          <Property Name="STD_MONTH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VMSTDUPDATE">
+          <Key>
+            <PropertyRef Name="STD_ID" />
+            <PropertyRef Name="STD_NAME" />
+            <PropertyRef Name="BATCHID" />
+            <PropertyRef Name="STATUS" />
+            <PropertyRef Name="ISEXAMSET" />
+          </Key>
+          <Property Name="STD_ID" Type="String" MaxLength="19" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STD_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BATCHID" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PROG_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SEM_ID" Type="Int32" />
+          <Property Name="STATUS" Type="Int32" Nullable="false" />
+          <Property Name="PRIM_NUM" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="SECON_NUM" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="OTHER_NUM" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ISEXAMSET" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VMTRANSFERLOG">
+          <Key>
+            <PropertyRef Name="STD_ID" />
+          </Key>
+          <Property Name="STD_ID" Type="Int32" Nullable="false" />
+          <Property Name="TF_FROM" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="TF_TO" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="LOG_DATE" Type="DateTime" Precision="0" />
+          <Property Name="TF_MONTH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__ATTENDANC__SEM_I__151B244E">
+          <End Role="SEMESTERS" Type="Self.SEMESTER" Multiplicity="0..1" />
+          <End Role="ATTENDANCE" Type="Self.ATTENDANCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEMESTERS">
+              <PropertyRef Name="SEM_ID" />
+            </Principal>
+            <Dependent Role="ATTENDANCE">
+              <PropertyRef Name="SEM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ATTENDANCE__14270015">
+          <End Role="COURSES" Type="Self.COURS" Multiplicity="0..1" />
+          <End Role="ATTENDANCE" Type="Self.ATTENDANCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COURSES">
+              <PropertyRef Name="COURSE_ID" />
+              <PropertyRef Name="COURSE_CODE" />
+            </Principal>
+            <Dependent Role="ATTENDANCE">
+              <PropertyRef Name="COURSE_ID" />
+              <PropertyRef Name="COURSE_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FACUTLY_BATCH__4316F928">
+          <End Role="BATCH_REGISTRATION" Type="Self.BATCH_REGISTRATION" Multiplicity="0..1" />
+          <End Role="FACUTLY_BATCH" Type="Self.FACUTLY_BATCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BATCH_REGISTRATION">
+              <PropertyRef Name="BACTCH_NO" />
+              <PropertyRef Name="TIME_SLOT" />
+            </Principal>
+            <Dependent Role="FACUTLY_BATCH">
+              <PropertyRef Name="FA_BATCHNO" />
+              <PropertyRef Name="FA_TIME_SLOT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SKILLSNEW__49C3F6B7">
+          <End Role="BATCH_REGISTRATION" Type="Self.BATCH_REGISTRATION" Multiplicity="0..1" />
+          <End Role="SKILLS" Type="Self.SKILL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BATCH_REGISTRATION">
+              <PropertyRef Name="BACTCH_NO" />
+              <PropertyRef Name="TIME_SLOT" />
+            </Principal>
+            <Dependent Role="SKILLS">
+              <PropertyRef Name="BATCH_NO" />
+              <PropertyRef Name="TIME_SLOT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__STUDENTINFO__68487DD7">
+          <End Role="BATCH_REGISTRATION" Type="Self.BATCH_REGISTRATION" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="STUDENTINFO" Type="Self.STUDENTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BATCH_REGISTRATION">
+              <PropertyRef Name="BACTCH_NO" />
+              <PropertyRef Name="TIME_SLOT" />
+            </Principal>
+            <Dependent Role="STUDENTINFO">
+              <PropertyRef Name="BATCH_NO" />
+              <PropertyRef Name="TIME_SLOT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COURSES__SEM_ID__2E1BDC42">
+          <End Role="SEMESTERS" Type="Self.SEMESTER" Multiplicity="0..1" />
+          <End Role="COURSES" Type="Self.COURS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEMESTERS">
+              <PropertyRef Name="SEM_ID" />
+            </Principal>
+            <Dependent Role="COURSES">
+              <PropertyRef Name="SEM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FACUTLY_BATCH__4222D4EF">
+          <End Role="FACULTY" Type="Self.FACULTY" Multiplicity="0..1" />
+          <End Role="FACUTLY_BATCH" Type="Self.FACUTLY_BATCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACULTY">
+              <PropertyRef Name="ID" />
+              <PropertyRef Name="FA_CODE" />
+            </Principal>
+            <Dependent Role="FACUTLY_BATCH">
+              <PropertyRef Name="ID" />
+              <PropertyRef Name="FA_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REGSKILL__SEM_ID__71D1E811">
+          <End Role="SEMESTERS" Type="Self.SEMESTER" Multiplicity="0..1" />
+          <End Role="REGSKILL" Type="Self.REGSKILL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEMESTERS">
+              <PropertyRef Name="SEM_ID" />
+            </Principal>
+            <Dependent Role="REGSKILL">
+              <PropertyRef Name="SEM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SKILLSNEW__SEM_I__4AB81AF0">
+          <End Role="SEMESTERS" Type="Self.SEMESTER" Multiplicity="0..1" />
+          <End Role="SKILLS" Type="Self.SKILL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEMESTERS">
+              <PropertyRef Name="SEM_ID" />
+            </Principal>
+            <Dependent Role="SKILLS">
+              <PropertyRef Name="SEM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SEMID_SEMESTER_FK">
+          <End Role="SEMESTERS" Type="Self.SEMESTER" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="STUDENTINFO" Type="Self.STUDENTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEMESTERS">
+              <PropertyRef Name="SEM_ID" />
+            </Principal>
+            <Dependent Role="STUDENTINFO">
+              <PropertyRef Name="SEM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERS__ROLE_ID__267ABA7A">
+          <End Role="USEROLE" Type="Self.USEROLE" Multiplicity="0..1" />
+          <End Role="USERS" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USEROLE">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="APTECHDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACADMICS" EntityType="Self.ACADMIC" />
+          <EntitySet Name="APPROGRAMs" EntityType="Self.APPROGRAM" />
+          <EntitySet Name="ATTENDANCEs" EntityType="Self.ATTENDANCE" />
+          <EntitySet Name="BATCH_REGISTRATION" EntityType="Self.BATCH_REGISTRATION" />
+          <EntitySet Name="BATCHDAYS" EntityType="Self.BATCHDAY" />
+          <EntitySet Name="CONTACTNOes" EntityType="Self.CONTACTNO" />
+          <EntitySet Name="COURSES" EntityType="Self.COURS" />
+          <EntitySet Name="FACULTies" EntityType="Self.FACULTY" />
+          <EntitySet Name="FACUTLY_BATCH" EntityType="Self.FACUTLY_BATCH" />
+          <EntitySet Name="MENUs" EntityType="Self.MENU" />
+          <EntitySet Name="REGSKILLs" EntityType="Self.REGSKILL" />
+          <EntitySet Name="SEMESTERS" EntityType="Self.SEMESTER" />
+          <EntitySet Name="SKILLS" EntityType="Self.SKILL" />
+          <EntitySet Name="STD_LOG" EntityType="Self.STD_LOG" />
+          <EntitySet Name="STUDENT_LOG" EntityType="Self.STUDENT_LOG" />
+          <EntitySet Name="STUDENTINFOes" EntityType="Self.STUDENTINFO" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="USEROLEs" EntityType="Self.USEROLE" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <EntitySet Name="EXREPORTs" EntityType="Self.EXREPORT" />
+          <EntitySet Name="VMBACTH_FA" EntityType="Self.VMBACTH_FA" />
+          <EntitySet Name="VMBATCHINFOes" EntityType="Self.VMBATCHINFO" />
+          <EntitySet Name="VMBATCHSKILLs" EntityType="Self.VMBATCHSKILL" />
+          <EntitySet Name="VMEXAMLOGs" EntityType="Self.VMEXAMLOG" />
+          <EntitySet Name="VMSTDETAILS" EntityType="Self.VMSTDETAIL" />
+          <EntitySet Name="VMSTDLOGs" EntityType="Self.VMSTDLOG" />
+          <EntitySet Name="VMSTDUPDATEs" EntityType="Self.VMSTDUPDATE" />
+          <EntitySet Name="VMTRANSFERLOGs" EntityType="Self.VMTRANSFERLOG" />
+          <AssociationSet Name="FK__ATTENDANC__SEM_I__151B244E" Association="Self.FK__ATTENDANC__SEM_I__151B244E">
+            <End Role="SEMESTERS" EntitySet="SEMESTERS" />
+            <End Role="ATTENDANCE" EntitySet="ATTENDANCEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ATTENDANCE__14270015" Association="Self.FK__ATTENDANCE__14270015">
+            <End Role="COURSES" EntitySet="COURSES" />
+            <End Role="ATTENDANCE" EntitySet="ATTENDANCEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FACUTLY_BATCH__4316F928" Association="Self.FK__FACUTLY_BATCH__4316F928">
+            <End Role="BATCH_REGISTRATION" EntitySet="BATCH_REGISTRATION" />
+            <End Role="FACUTLY_BATCH" EntitySet="FACUTLY_BATCH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SKILLSNEW__49C3F6B7" Association="Self.FK__SKILLSNEW__49C3F6B7">
+            <End Role="BATCH_REGISTRATION" EntitySet="BATCH_REGISTRATION" />
+            <End Role="SKILLS" EntitySet="SKILLS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__STUDENTINFO__68487DD7" Association="Self.FK__STUDENTINFO__68487DD7">
+            <End Role="BATCH_REGISTRATION" EntitySet="BATCH_REGISTRATION" />
+            <End Role="STUDENTINFO" EntitySet="STUDENTINFOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COURSES__SEM_ID__2E1BDC42" Association="Self.FK__COURSES__SEM_ID__2E1BDC42">
+            <End Role="SEMESTERS" EntitySet="SEMESTERS" />
+            <End Role="COURSES" EntitySet="COURSES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FACUTLY_BATCH__4222D4EF" Association="Self.FK__FACUTLY_BATCH__4222D4EF">
+            <End Role="FACULTY" EntitySet="FACULTies" />
+            <End Role="FACUTLY_BATCH" EntitySet="FACUTLY_BATCH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REGSKILL__SEM_ID__71D1E811" Association="Self.FK__REGSKILL__SEM_ID__71D1E811">
+            <End Role="SEMESTERS" EntitySet="SEMESTERS" />
+            <End Role="REGSKILL" EntitySet="REGSKILLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SKILLSNEW__SEM_I__4AB81AF0" Association="Self.FK__SKILLSNEW__SEM_I__4AB81AF0">
+            <End Role="SEMESTERS" EntitySet="SEMESTERS" />
+            <End Role="SKILLS" EntitySet="SKILLS" />
+          </AssociationSet>
+          <AssociationSet Name="SEMID_SEMESTER_FK" Association="Self.SEMID_SEMESTER_FK">
+            <End Role="SEMESTERS" EntitySet="SEMESTERS" />
+            <End Role="STUDENTINFO" EntitySet="STUDENTINFOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERS__ROLE_ID__267ABA7A" Association="Self.FK__USERS__ROLE_ID__267ABA7A">
+            <End Role="USEROLE" EntitySet="USEROLEs" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
+          <FunctionImport Name="GetAcadmicHeadMenu" ReturnType="Collection(APTECHDBModel.GetAcadmicHeadMenu_Result)" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(APTECHDBModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(APTECHDBModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="spAddNewBatch">
+            <Parameter Name="BATCHNO" Mode="In" Type="Int32" />
+            <Parameter Name="TIMESLOT" Mode="In" Type="String" />
+            <Parameter Name="DAYID" Mode="In" Type="Int32" />
+            <Parameter Name="STDTARGET" Mode="In" Type="Int32" />
+            <Parameter Name="STARTDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="EXENDDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="ENDDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="FAID" Mode="In" Type="Int32" />
+            <Parameter Name="FACODE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spAddUser">
+            <Parameter Name="UNAME" Mode="In" Type="String" />
+            <Parameter Name="UPASS" Mode="In" Type="String" />
+            <Parameter Name="ROLEID" Mode="In" Type="Int32" />
+            <Parameter Name="FANAME" Mode="In" Type="String" />
+            <Parameter Name="FNAME" Mode="In" Type="String" />
+            <Parameter Name="FANIC" Mode="In" Type="String" />
+            <Parameter Name="FACODE" Mode="In" Type="String" />
+            <Parameter Name="GENDER" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spAttendanceMWF" />
+          <FunctionImport Name="spAttendanceTTS" />
+          <FunctionImport Name="spBatchList" ReturnType="Collection(String)" />
+          <FunctionImport Name="spBatchList01" ReturnType="Collection(String)" />
+          <FunctionImport Name="spBatchMerger">
+            <Parameter Name="TOBATCHNO" Mode="In" Type="String" />
+            <Parameter Name="FROMBATCHNO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spBatchTransferBySTDID">
+            <Parameter Name="STDID" Mode="In" Type="Int32" />
+            <Parameter Name="BATCHID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spChangeBatchFaculty">
+            <Parameter Name="BATCHID" Mode="In" Type="String" />
+            <Parameter Name="FAID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spChangePassword">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="UPASS" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spChangePasswordByEMPID">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="UPASS" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spExamReport" ReturnType="Collection(APTECHDBModel.spExamReport_Result)">
+            <Parameter Name="BATCHID" Mode="In" Type="String" />
+            <Parameter Name="SEMNAME" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spFacultyBatchLoad" ReturnType="Collection(APTECHDBModel.spFacultyBatchLoad_Result)" />
+          <FunctionImport Name="spFacultyBatchLoadById" ReturnType="Collection(APTECHDBModel.spFacultyBatchLoadById_Result)">
+            <Parameter Name="FACULTYID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spFollowUpByBatchID" ReturnType="Collection(APTECHDBModel.spFollowUpByBatchID_Result)">
+            <Parameter Name="BATCHID" Mode="In" Type="String" />
+            <Parameter Name="DATE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spGetAcadmicHeadMenu" ReturnType="Collection(APTECHDBModel.spGetAcadmicHeadMenu_Result)" />
+          <FunctionImport Name="spGetBatchByID" ReturnType="Collection(APTECHDBModel.spGetBatchByID_Result)">
+            <Parameter Name="BATCHID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spGetBatchStatus" ReturnType="Collection(APTECHDBModel.spGetBatchStatus_Result)" />
+          <FunctionImport Name="spGetFacultyMenu" ReturnType="Collection(APTECHDBModel.spGetFacultyMenu_Result)" />
+          <FunctionImport Name="spGetGroupLeaderMenu" ReturnType="Collection(APTECHDBModel.spGetGroupLeaderMenu_Result)" />
+          <FunctionImport Name="spGetListOfFaculty_Batches" ReturnType="Collection(String)" />
+          <FunctionImport Name="spGetStudentCountBatchWise">
+            <Parameter Name="BATCHID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spLsitOfActiveEmp" ReturnType="Collection(APTECHDBModel.spLsitOfActiveEmp_Result)" />
+          <FunctionImport Name="spStudentRegistration">
+            <Parameter Name="STD_ID" Mode="In" Type="Int32" />
+            <Parameter Name="STD_NAME" Mode="In" Type="String" />
+            <Parameter Name="STD_FNAME" Mode="In" Type="String" />
+            <Parameter Name="STD_PIC" Mode="In" Type="Binary" />
+            <Parameter Name="DOB" Mode="In" Type="DateTime" />
+            <Parameter Name="GENDER" Mode="In" Type="Int32" />
+            <Parameter Name="PROG_NAME" Mode="In" Type="String" />
+            <Parameter Name="BATCH_NO" Mode="In" Type="Int32" />
+            <Parameter Name="TIME_SLOT" Mode="In" Type="String" />
+            <Parameter Name="EMAIL_ID" Mode="In" Type="String" />
+            <Parameter Name="PAR_EMAIL_ID" Mode="In" Type="String" />
+            <Parameter Name="HOME_ADDRE" Mode="In" Type="String" />
+            <Parameter Name="SEM_ID" Mode="In" Type="Int32" />
+            <Parameter Name="REGIS_DATE" Mode="In" Type="DateTime" />
+            <Parameter Name="PRIM_NUM" Mode="In" Type="String" />
+            <Parameter Name="SECON_NUM" Mode="In" Type="String" />
+            <Parameter Name="SMS_NUM" Mode="In" Type="String" />
+            <Parameter Name="OTHER_NUM" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdateSemesterIdBatchWise">
+            <Parameter Name="BATCHTIME" Mode="In" Type="String" />
+            <Parameter Name="SEM_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdateStudent">
+            <Parameter Name="STD_ID" Mode="In" Type="Int32" />
+            <Parameter Name="STD_NAME" Mode="In" Type="String" />
+            <Parameter Name="STD_FNAME" Mode="In" Type="String" />
+            <Parameter Name="STD_PIC" Mode="In" Type="Binary" />
+            <Parameter Name="DOB" Mode="In" Type="DateTime" />
+            <Parameter Name="GENDER" Mode="In" Type="Int32" />
+            <Parameter Name="PROG_NAME" Mode="In" Type="String" />
+            <Parameter Name="BATCH_NO" Mode="In" Type="Int32" />
+            <Parameter Name="TIME_SLOT" Mode="In" Type="String" />
+            <Parameter Name="EMAIL_ID" Mode="In" Type="String" />
+            <Parameter Name="PAR_EMAIL_ID" Mode="In" Type="String" />
+            <Parameter Name="HOME_ADDRE" Mode="In" Type="String" />
+            <Parameter Name="SEM_ID" Mode="In" Type="Int32" />
+            <Parameter Name="NO_ATTENDED" Mode="In" Type="Int32" />
+            <Parameter Name="REGIS_DATE" Mode="In" Type="DateTime" />
+            <Parameter Name="PRIM_NUM" Mode="In" Type="String" />
+            <Parameter Name="SECON_NUM" Mode="In" Type="String" />
+            <Parameter Name="SMS_NUM" Mode="In" Type="String" />
+            <Parameter Name="OTHER_NUM" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdateStudent01">
+            <Parameter Name="STD_ID" Mode="In" Type="Int32" />
+            <Parameter Name="PROG_NAME" Mode="In" Type="String" />
+            <Parameter Name="EMAIL_ID" Mode="In" Type="String" />
+            <Parameter Name="PRIM_NUM" Mode="In" Type="String" />
+            <Parameter Name="SECON_NUM" Mode="In" Type="String" />
+            <Parameter Name="SMS_NUM" Mode="In" Type="String" />
+            <Parameter Name="NO_ATTENDED" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdateStudentCountByBatchID">
+            <Parameter Name="BATCHID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdateStudentCountInBatches" />
+          <FunctionImport Name="spUpdateStudentCountWithZero" />
+          <FunctionImport Name="spUpdateStudentStatus">
+            <Parameter Name="STATUSCODE" Mode="In" Type="String" />
+            <Parameter Name="STDID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetAcadmicHeadMenu_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="MTITLE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MURL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MICON" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ROLE_ID" Nullable="false" />
+          <Property Type="String" Name="ROUTE_ID" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spExamReport_Result">
+          <Property Type="Int32" Name="STD_ID" Nullable="false" />
+          <Property Type="String" Name="STD_NAME" Nullable="false" />
+          <Property Type="String" Name="BATCHID" Nullable="false" MaxLength="13" />
+          <Property Type="Int32" Name="SEM_ID" Nullable="true" />
+          <Property Type="String" Name="SemesterName" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="ExamCode" Nullable="true" />
+          <Property Type="String" Name="ExamName" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="MarksObtained" Nullable="true" />
+          <Property Type="String" Name="ExamType" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ExamDate" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="spFacultyBatchLoad_Result">
+          <Property Type="String" Name="FACULTY" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="BATCH_LOAD" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spFacultyBatchLoadById_Result">
+          <Property Type="String" Name="FACULTY" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="BATCH_LOAD" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spFollowUpByBatchID_Result">
+          <Property Type="Int32" Name="STUDENT_ID" Nullable="true" />
+          <Property Type="String" Name="STD_NAME" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="COURSE_ID" Nullable="true" />
+          <Property Type="String" Name="BATCH_ID" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="FOLLOWUP" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PRIM_NUM" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="SECON_NUM" Nullable="true" MaxLength="12" />
+        </ComplexType>
+        <ComplexType Name="spGetAcadmicHeadMenu_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="MTITLE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MURL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MICON" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ROLE_ID" Nullable="false" />
+          <Property Type="String" Name="ROUTE_ID" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spGetBatchByID_Result">
+          <Property Type="String" Name="STD_ID" Nullable="false" MaxLength="19" />
+          <Property Type="String" Name="STD_NAME" Nullable="false" />
+          <Property Type="String" Name="BATCHID" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="PROG_NAME" Nullable="true" />
+          <Property Type="Int32" Name="SEM_ID" Nullable="true" />
+          <Property Type="Int32" Name="STATUS" Nullable="false" />
+          <Property Type="String" Name="PRIM_NUM" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="SECON_NUM" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="OTHER_NUM" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="ISEXAMSET" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spGetBatchStatus_Result">
+          <Property Type="String" Name="BATCH_ID" Nullable="false" MaxLength="13" />
+          <Property Type="Int32" Name="NUMBER_OF_STUDENT" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetFacultyMenu_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="MTITLE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MURL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MICON" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ROLE_ID" Nullable="false" />
+          <Property Type="String" Name="ROUTE_ID" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spGetGroupLeaderMenu_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="MTITLE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MURL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MICON" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ROLE_ID" Nullable="false" />
+          <Property Type="String" Name="ROUTE_ID" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spLsitOfActiveEmp_Result">
+          <Property Type="String" Name="FA_NAME" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="FA_CODE" Nullable="false" MaxLength="3" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="APTECHDBModelStoreContainer" CdmEntityContainer="APTECHDBEntities">
+          <EntitySetMapping Name="ACADMICS">
+            <EntityTypeMapping TypeName="APTECHDBModel.ACADMIC">
+              <MappingFragment StoreEntitySet="ACADMICS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="STD_ID" ColumnName="STD_ID" />
+                <ScalarProperty Name="PASS_YEAR" ColumnName="PASS_YEAR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APPROGRAMs">
+            <EntityTypeMapping TypeName="APTECHDBModel.APPROGRAM">
+              <MappingFragment StoreEntitySet="APPROGRAM">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PROG_NAME" ColumnName="PROG_NAME" />
+                <ScalarProperty Name="SEM_CURRCULUM" ColumnName="SEM_CURRCULUM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ATTENDANCEs">
+            <EntityTypeMapping TypeName="APTECHDBModel.ATTENDANCE">
+              <MappingFragment StoreEntitySet="ATTENDANCE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+                <ScalarProperty Name="STD_NAME" ColumnName="STD_NAME" />
+                <ScalarProperty Name="COURSE_ID" ColumnName="COURSE_ID" />
+                <ScalarProperty Name="COURSE_CODE" ColumnName="COURSE_CODE" />
+                <ScalarProperty Name="BATCH_ID" ColumnName="BATCH_ID" />
+                <ScalarProperty Name="ATT_DATE" ColumnName="ATT_DATE" />
+                <ScalarProperty Name="SEM_ID" ColumnName="SEM_ID" />
+                <ScalarProperty Name="SESS_PORTAL" ColumnName="SESS_PORTAL" />
+                <ScalarProperty Name="SESS_COURSE" ColumnName="SESS_COURSE" />
+                <ScalarProperty Name="MARK_ATTEND" ColumnName="MARK_ATTEND" />
+                <ScalarProperty Name="FOLLOWUP" ColumnName="FOLLOWUP" />
+                <ScalarProperty Name="ISFOLLOWUP" ColumnName="ISFOLLOWUP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BATCH_REGISTRATION">
+            <EntityTypeMapping TypeName="APTECHDBModel.BATCH_REGISTRATION">
+              <MappingFragment StoreEntitySet="BATCH_REGISTRATION">
+                <ScalarProperty Name="BACTCH_NO" ColumnName="BACTCH_NO" />
+                <ScalarProperty Name="TIME_SLOT" ColumnName="TIME_SLOT" />
+                <ScalarProperty Name="DAYID" ColumnName="DAYID" />
+                <ScalarProperty Name="ENROLL_STD" ColumnName="ENROLL_STD" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="EX_END_DATE" ColumnName="EX_END_DATE" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BATCHDAYS">
+            <EntityTypeMapping TypeName="APTECHDBModel.BATCHDAY">
+              <MappingFragment StoreEntitySet="BATCHDAYS">
+                <ScalarProperty Name="DAYID" ColumnName="DAYID" />
+                <ScalarProperty Name="DAYS_CODE" ColumnName="DAYS_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTACTNOes">
+            <EntityTypeMapping TypeName="APTECHDBModel.CONTACTNO">
+              <MappingFragment StoreEntitySet="CONTACTNO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="STD_ID" ColumnName="STD_ID" />
+                <ScalarProperty Name="REGIS_DATE" ColumnName="REGIS_DATE" />
+                <ScalarProperty Name="PRIM_NUM" ColumnName="PRIM_NUM" />
+                <ScalarProperty Name="SECON_NUM" ColumnName="SECON_NUM" />
+                <ScalarProperty Name="SMS_NUM" ColumnName="SMS_NUM" />
+                <ScalarProperty Name="OTHER_NUM" ColumnName="OTHER_NUM" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="PROGRAM_ID" ColumnName="PROGRAM_ID" />
+                <ScalarProperty Name="ISEXAMSET" ColumnName="ISEXAMSET" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="NO_ATTENDED" ColumnName="NO_ATTENDED" />
+                <ScalarProperty Name="TOTAL_CLASS" ColumnName="TOTAL_CLASS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COURSES">
+            <EntityTypeMapping TypeName="APTECHDBModel.COURS">
+              <MappingFragment StoreEntitySet="COURSES">
+                <ScalarProperty Name="COURSE_ID" ColumnName="COURSE_ID" />
+                <ScalarProperty Name="COURSE_TITLE" ColumnName="COURSE_TITLE" />
+                <ScalarProperty Name="COURSE_CODE" ColumnName="COURSE_CODE" />
+                <ScalarProperty Name="SEM_ID" ColumnName="SEM_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FACULTies">
+            <EntityTypeMapping TypeName="APTECHDBModel.FACULTY">
+              <MappingFragment StoreEntitySet="FACULTY">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FA_NAME" ColumnName="FA_NAME" />
+                <ScalarProperty Name="FA_FNAME" ColumnName="FA_FNAME" />
+                <ScalarProperty Name="FA_NIC" ColumnName="FA_NIC" />
+                <ScalarProperty Name="FA_GENDER" ColumnName="FA_GENDER" />
+                <ScalarProperty Name="FA_CODE" ColumnName="FA_CODE" />
+                <ScalarProperty Name="FA_EMAILID" ColumnName="FA_EMAILID" />
+                <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FACUTLY_BATCH">
+            <EntityTypeMapping TypeName="APTECHDBModel.FACUTLY_BATCH">
+              <MappingFragment StoreEntitySet="FACUTLY_BATCH">
+                <ScalarProperty Name="FA_BA_ID" ColumnName="FA_BA_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FA_CODE" ColumnName="FA_CODE" />
+                <ScalarProperty Name="FA_BATCHNO" ColumnName="FA_BATCHNO" />
+                <ScalarProperty Name="FA_TIME_SLOT" ColumnName="FA_TIME_SLOT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MENUs">
+            <EntityTypeMapping TypeName="APTECHDBModel.MENU">
+              <MappingFragment StoreEntitySet="MENU">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MTITLE" ColumnName="MTITLE" />
+                <ScalarProperty Name="MURL" ColumnName="MURL" />
+                <ScalarProperty Name="MICON" ColumnName="MICON" />
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="ROUTE_ID" ColumnName="ROUTE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REGSKILLs">
+            <EntityTypeMapping TypeName="APTECHDBModel.REGSKILL">
+              <MappingFragment StoreEntitySet="REGSKILL">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="STD_ID" ColumnName="STD_ID" />
+                <ScalarProperty Name="SEM_ID" ColumnName="SEM_ID" />
+                <ScalarProperty Name="SKILL" ColumnName="SKILL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEMESTERS">
+            <EntityTypeMapping TypeName="APTECHDBModel.SEMESTER">
+              <MappingFragment StoreEntitySet="SEMESTERS">
+                <ScalarProperty Name="SEM_ID" ColumnName="SEM_ID" />
+                <ScalarProperty Name="SEM_TITLE" ColumnName="SEM_TITLE" />
+                <ScalarProperty Name="SEM_CURRCULUM" ColumnName="SEM_CURRCULUM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SKILLS">
+            <EntityTypeMapping TypeName="APTECHDBModel.SKILL">
+              <MappingFragment StoreEntitySet="SKILLS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BATCH_NO" ColumnName="BATCH_NO" />
+                <ScalarProperty Name="TIME_SLOT" ColumnName="TIME_SLOT" />
+                <ScalarProperty Name="SEM_ID" ColumnName="SEM_ID" />
+                <ScalarProperty Name="CURRENT_SKILL" ColumnName="CURRENT_SKILL" />
+                <ScalarProperty Name="NEXT_SKILL" ColumnName="NEXT_SKILL" />
+                <ScalarProperty Name="CURRI_ID" ColumnName="CURRI_ID" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="STC_SPACE" ColumnName="STC_SPACE" />
+                <ScalarProperty Name="FA_ID" ColumnName="FA_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STD_LOG">
+            <EntityTypeMapping TypeName="APTECHDBModel.STD_LOG">
+              <MappingFragment StoreEntitySet="STD_LOG">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="STD_ID" ColumnName="STD_ID" />
+                <ScalarProperty Name="TF_TO" ColumnName="TF_TO" />
+                <ScalarProperty Name="TF_FROM" ColumnName="TF_FROM" />
+                <ScalarProperty Name="LOG_DATE" ColumnName="LOG_DATE" />
+                <ScalarProperty Name="TF_FORM" ColumnName="TF_FORM" />
+                <ScalarProperty Name="TF_MONTH" ColumnName="TF_MONTH" />
+                <ScalarProperty Name="STD_STATUS" ColumnName="STD_STATUS" />
+                <ScalarProperty Name="STD_MONTH" ColumnName="STD_MONTH" />
+                <ScalarProperty Name="EXAM_E1" ColumnName="EXAM_E1" />
+                <ScalarProperty Name="SEM_ID" ColumnName="SEM_ID" />
+                <ScalarProperty Name="EXM_MONTH" ColumnName="EXM_MONTH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STUDENT_LOG">
+            <EntityTypeMapping TypeName="APTECHDBModel.STUDENT_LOG">
+              <MappingFragment StoreEntitySet="STUDENT_LOG">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="STD_ID" ColumnName="STD_ID" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="LOG_DATE" ColumnName="LOG_DATE" />
+                <ScalarProperty Name="LOG_MONTH" ColumnName="LOG_MONTH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STUDENTINFOes">
+            <EntityTypeMapping TypeName="APTECHDBModel.STUDENTINFO">
+              <MappingFragment StoreEntitySet="STUDENTINFO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="STD_ID" ColumnName="STD_ID" />
+                <ScalarProperty Name="STD_NAME" ColumnName="STD_NAME" />
+                <ScalarProperty Name="STD_FNAME" ColumnName="STD_FNAME" />
+                <ScalarProperty Name="STD_PIC" ColumnName="STD_PIC" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="PROG_NAME" ColumnName="PROG_NAME" />
+                <ScalarProperty Name="BATCH_NO" ColumnName="BATCH_NO" />
+                <ScalarProperty Name="TIME_SLOT" ColumnName="TIME_SLOT" />
+                <ScalarProperty Name="EMAIL_ID" ColumnName="EMAIL_ID" />
+                <ScalarProperty Name="PAR_EMAIL_ID" ColumnName="PAR_EMAIL_ID" />
+                <ScalarProperty Name="HOME_ADDRE" ColumnName="HOME_ADDRE" />
+                <ScalarProperty Name="SEM_ID" ColumnName="SEM_ID" />
+                <ScalarProperty Name="ISSTC" ColumnName="ISSTC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="APTECHDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USEROLEs">
+            <EntityTypeMapping TypeName="APTECHDBModel.USEROLE">
+              <MappingFragment StoreEntitySet="USEROLE">
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
+                <ScalarProperty Name="UROLE" ColumnName="UROLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="APTECHDBModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UNAME" ColumnName="UNAME" />
+                <ScalarProperty Name="UPASS" ColumnName="UPASS" />
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EXREPORTs">
+            <EntityTypeMapping TypeName="APTECHDBModel.EXREPORT">
+              <MappingFragment StoreEntitySet="EXREPORT">
+                <ScalarProperty Name="STD_ID" ColumnName="STD_ID" />
+                <ScalarProperty Name="STD_NAME" ColumnName="STD_NAME" />
+                <ScalarProperty Name="BATCHID" ColumnName="BATCHID" />
+                <ScalarProperty Name="SEM_ID" ColumnName="SEM_ID" />
+                <ScalarProperty Name="SemesterName" ColumnName="SemesterName" />
+                <ScalarProperty Name="ExamCode" ColumnName="ExamCode" />
+                <ScalarProperty Name="ExamName" ColumnName="ExamName" />
+                <ScalarProperty Name="MarksObtained" ColumnName="MarksObtained" />
+                <ScalarProperty Name="ExamType" ColumnName="ExamType" />
+                <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VMBACTH_FA">
+            <EntityTypeMapping TypeName="APTECHDBModel.VMBACTH_FA">
+              <MappingFragment StoreEntitySet="VMBACTH_FA">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FA_NAME" ColumnName="FA_NAME" />
+                <ScalarProperty Name="FA_EMAILID" ColumnName="FA_EMAILID" />
+                <ScalarProperty Name="BATCHDATA" ColumnName="BATCHDATA" />
+                <ScalarProperty Name="ENROLL_STD" ColumnName="ENROLL_STD" />
+                <ScalarProperty Name="DAYS_CODE" ColumnName="DAYS_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VMBATCHINFOes">
+            <EntityTypeMapping TypeName="APTECHDBModel.VMBATCHINFO">
+              <MappingFragment StoreEntitySet="VMBATCHINFO">
+                <ScalarProperty Name="STD_ID" ColumnName="STD_ID" />
+                <ScalarProperty Name="STD_NAME" ColumnName="STD_NAME" />
+                <ScalarProperty Name="BATCH_NO" ColumnName="BATCH_NO" />
+                <ScalarProperty Name="TIME_SLOT" ColumnName="TIME_SLOT" />
+                <ScalarProperty Name="PROG_NAME" ColumnName="PROG_NAME" />
+                <ScalarProperty Name="SEM_ID" ColumnName="SEM_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VMBATCHSKILLs">
+            <EntityTypeMapping TypeName="APTECHDBModel.VMBATCHSKILL">
+              <MappingFragment StoreEntitySet="VMBATCHSKILL">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BATCH_NO" ColumnName="BATCH_NO" />
+                <ScalarProperty Name="TIME_SLOT" ColumnName="TIME_SLOT" />
+                <ScalarProperty Name="SEM_ID" ColumnName="SEM_ID" />
+                <ScalarProperty Name="CURRENT_SKILL" ColumnName="CURRENT_SKILL" />
+                <ScalarProperty Name="NEXT_SKILL" ColumnName="NEXT_SKILL" />
+                <ScalarProperty Name="CURRI_ID" ColumnName="CURRI_ID" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="STC_SPACE" ColumnName="STC_SPACE" />
+                <ScalarProperty Name="FA_ID" ColumnName="FA_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VMEXAMLOGs">
+            <EntityTypeMapping TypeName="APTECHDBModel.VMEXAMLOG">
+              <MappingFragment StoreEntitySet="VMEXAMLOG">
+                <ScalarProperty Name="STD_ID" ColumnName="STD_ID" />
+                <ScalarProperty Name="STD_STATUS" ColumnName="STD_STATUS" />
+                <ScalarProperty Name="LOG_DATE" ColumnName="LOG_DATE" />
+                <ScalarProperty Name="EXAM_E1" ColumnName="EXAM_E1" />
+                <ScalarProperty Name="SEM_ID" ColumnName="SEM_ID" />
+                <ScalarProperty Name="EXM_MONTH" ColumnName="EXM_MONTH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VMSTDETAILS">
+            <EntityTypeMapping TypeName="APTECHDBModel.VMSTDETAIL">
+              <MappingFragment StoreEntitySet="VMSTDETAILS">
+                <ScalarProperty Name="STD_ID" ColumnName="STD_ID" />
+                <ScalarProperty Name="BATCHID" ColumnName="BATCHID" />
+                <ScalarProperty Name="STD_NAME" ColumnName="STD_NAME" />
+                <ScalarProperty Name="STD_PIC" ColumnName="STD_PIC" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="SEM_TITLE" ColumnName="SEM_TITLE" />
+                <ScalarProperty Name="PROG_NAME" ColumnName="PROG_NAME" />
+                <ScalarProperty Name="EMAIL_ID" ColumnName="EMAIL_ID" />
+                <ScalarProperty Name="SEM_ID" ColumnName="SEM_ID" />
+                <ScalarProperty Name="ISSTC" ColumnName="ISSTC" />
+                <ScalarProperty Name="PRIM_NUM" ColumnName="PRIM_NUM" />
+                <ScalarProperty Name="SECON_NUM" ColumnName="SECON_NUM" />
+                <ScalarProperty Name="SMS_NUM" ColumnName="SMS_NUM" />
+                <ScalarProperty Name="OTHER_NUM" ColumnName="OTHER_NUM" />
+                <ScalarProperty Name="NO_ATTENDED" ColumnName="NO_ATTENDED" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VMSTDLOGs">
+            <EntityTypeMapping TypeName="APTECHDBModel.VMSTDLOG">
+              <MappingFragment StoreEntitySet="VMSTDLOG">
+                <ScalarProperty Name="STD_ID" ColumnName="STD_ID" />
+                <ScalarProperty Name="STD_STATUS" ColumnName="STD_STATUS" />
+                <ScalarProperty Name="LOG_DATE" ColumnName="LOG_DATE" />
+                <ScalarProperty Name="STD_MONTH" ColumnName="STD_MONTH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VMSTDUPDATEs">
+            <EntityTypeMapping TypeName="APTECHDBModel.VMSTDUPDATE">
+              <MappingFragment StoreEntitySet="VMSTDUPDATE">
+                <ScalarProperty Name="STD_ID" ColumnName="STD_ID" />
+                <ScalarProperty Name="STD_NAME" ColumnName="STD_NAME" />
+                <ScalarProperty Name="BATCHID" ColumnName="BATCHID" />
+                <ScalarProperty Name="PROG_NAME" ColumnName="PROG_NAME" />
+                <ScalarProperty Name="SEM_ID" ColumnName="SEM_ID" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="PRIM_NUM" ColumnName="PRIM_NUM" />
+                <ScalarProperty Name="SECON_NUM" ColumnName="SECON_NUM" />
+                <ScalarProperty Name="OTHER_NUM" ColumnName="OTHER_NUM" />
+                <ScalarProperty Name="ISEXAMSET" ColumnName="ISEXAMSET" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VMTRANSFERLOGs">
+            <EntityTypeMapping TypeName="APTECHDBModel.VMTRANSFERLOG">
+              <MappingFragment StoreEntitySet="VMTRANSFERLOG">
+                <ScalarProperty Name="STD_ID" ColumnName="STD_ID" />
+                <ScalarProperty Name="TF_FROM" ColumnName="TF_FROM" />
+                <ScalarProperty Name="TF_TO" ColumnName="TF_TO" />
+                <ScalarProperty Name="LOG_DATE" ColumnName="LOG_DATE" />
+                <ScalarProperty Name="TF_MONTH" ColumnName="TF_MONTH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetAcadmicHeadMenu" FunctionName="APTECHDBModel.Store.GetAcadmicHeadMenu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APTECHDBModel.GetAcadmicHeadMenu_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MTITLE" ColumnName="MTITLE" />
+                <ScalarProperty Name="MURL" ColumnName="MURL" />
+                <ScalarProperty Name="MICON" ColumnName="MICON" />
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="ROUTE_ID" ColumnName="ROUTE_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="APTECHDBModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="APTECHDBModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="APTECHDBModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="APTECHDBModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APTECHDBModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="APTECHDBModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APTECHDBModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="APTECHDBModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="APTECHDBModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="spAddNewBatch" FunctionName="APTECHDBModel.Store.spAddNewBatch" />
+          <FunctionImportMapping FunctionImportName="spAddUser" FunctionName="APTECHDBModel.Store.spAddUser" />
+          <FunctionImportMapping FunctionImportName="spAttendanceMWF" FunctionName="APTECHDBModel.Store.spAttendanceMWF" />
+          <FunctionImportMapping FunctionImportName="spAttendanceTTS" FunctionName="APTECHDBModel.Store.spAttendanceTTS" />
+          <FunctionImportMapping FunctionImportName="spBatchList" FunctionName="APTECHDBModel.Store.spBatchList" />
+          <FunctionImportMapping FunctionImportName="spBatchList01" FunctionName="APTECHDBModel.Store.spBatchList01" />
+          <FunctionImportMapping FunctionImportName="spBatchMerger" FunctionName="APTECHDBModel.Store.spBatchMerger" />
+          <FunctionImportMapping FunctionImportName="spBatchTransferBySTDID" FunctionName="APTECHDBModel.Store.spBatchTransferBySTDID" />
+          <FunctionImportMapping FunctionImportName="spChangeBatchFaculty" FunctionName="APTECHDBModel.Store.spChangeBatchFaculty" />
+          <FunctionImportMapping FunctionImportName="spChangePassword" FunctionName="APTECHDBModel.Store.spChangePassword" />
+          <FunctionImportMapping FunctionImportName="spChangePasswordByEMPID" FunctionName="APTECHDBModel.Store.spChangePasswordByEMPID" />
+          <FunctionImportMapping FunctionImportName="spExamReport" FunctionName="APTECHDBModel.Store.spExamReport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APTECHDBModel.spExamReport_Result">
+                <ScalarProperty Name="STD_ID" ColumnName="STD_ID" />
+                <ScalarProperty Name="STD_NAME" ColumnName="STD_NAME" />
+                <ScalarProperty Name="BATCHID" ColumnName="BATCHID" />
+                <ScalarProperty Name="SEM_ID" ColumnName="SEM_ID" />
+                <ScalarProperty Name="SemesterName" ColumnName="SemesterName" />
+                <ScalarProperty Name="ExamCode" ColumnName="ExamCode" />
+                <ScalarProperty Name="ExamName" ColumnName="ExamName" />
+                <ScalarProperty Name="MarksObtained" ColumnName="MarksObtained" />
+                <ScalarProperty Name="ExamType" ColumnName="ExamType" />
+                <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spFacultyBatchLoad" FunctionName="APTECHDBModel.Store.spFacultyBatchLoad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APTECHDBModel.spFacultyBatchLoad_Result">
+                <ScalarProperty Name="FACULTY" ColumnName="FACULTY" />
+                <ScalarProperty Name="BATCH_LOAD" ColumnName="BATCH LOAD" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spFacultyBatchLoadById" FunctionName="APTECHDBModel.Store.spFacultyBatchLoadById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APTECHDBModel.spFacultyBatchLoadById_Result">
+                <ScalarProperty Name="FACULTY" ColumnName="FACULTY" />
+                <ScalarProperty Name="BATCH_LOAD" ColumnName="BATCH LOAD" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spFollowUpByBatchID" FunctionName="APTECHDBModel.Store.spFollowUpByBatchID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APTECHDBModel.spFollowUpByBatchID_Result">
+                <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+                <ScalarProperty Name="STD_NAME" ColumnName="STD_NAME" />
+                <ScalarProperty Name="COURSE_ID" ColumnName="COURSE_ID" />
+                <ScalarProperty Name="BATCH_ID" ColumnName="BATCH_ID" />
+                <ScalarProperty Name="FOLLOWUP" ColumnName="FOLLOWUP" />
+                <ScalarProperty Name="PRIM_NUM" ColumnName="PRIM_NUM" />
+                <ScalarProperty Name="SECON_NUM" ColumnName="SECON_NUM" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetAcadmicHeadMenu" FunctionName="APTECHDBModel.Store.spGetAcadmicHeadMenu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APTECHDBModel.spGetAcadmicHeadMenu_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MTITLE" ColumnName="MTITLE" />
+                <ScalarProperty Name="MURL" ColumnName="MURL" />
+                <ScalarProperty Name="MICON" ColumnName="MICON" />
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="ROUTE_ID" ColumnName="ROUTE_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetBatchByID" FunctionName="APTECHDBModel.Store.spGetBatchByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APTECHDBModel.spGetBatchByID_Result">
+                <ScalarProperty Name="STD_ID" ColumnName="STD_ID" />
+                <ScalarProperty Name="STD_NAME" ColumnName="STD_NAME" />
+                <ScalarProperty Name="BATCHID" ColumnName="BATCHID" />
+                <ScalarProperty Name="PROG_NAME" ColumnName="PROG_NAME" />
+                <ScalarProperty Name="SEM_ID" ColumnName="SEM_ID" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="PRIM_NUM" ColumnName="PRIM_NUM" />
+                <ScalarProperty Name="SECON_NUM" ColumnName="SECON_NUM" />
+                <ScalarProperty Name="OTHER_NUM" ColumnName="OTHER_NUM" />
+                <ScalarProperty Name="ISEXAMSET" ColumnName="ISEXAMSET" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetBatchStatus" FunctionName="APTECHDBModel.Store.spGetBatchStatus">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APTECHDBModel.spGetBatchStatus_Result">
+                <ScalarProperty Name="BATCH_ID" ColumnName="BATCH ID" />
+                <ScalarProperty Name="NUMBER_OF_STUDENT" ColumnName="NUMBER OF STUDENT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetFacultyMenu" FunctionName="APTECHDBModel.Store.spGetFacultyMenu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APTECHDBModel.spGetFacultyMenu_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MTITLE" ColumnName="MTITLE" />
+                <ScalarProperty Name="MURL" ColumnName="MURL" />
+                <ScalarProperty Name="MICON" ColumnName="MICON" />
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="ROUTE_ID" ColumnName="ROUTE_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetGroupLeaderMenu" FunctionName="APTECHDBModel.Store.spGetGroupLeaderMenu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APTECHDBModel.spGetGroupLeaderMenu_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MTITLE" ColumnName="MTITLE" />
+                <ScalarProperty Name="MURL" ColumnName="MURL" />
+                <ScalarProperty Name="MICON" ColumnName="MICON" />
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="ROUTE_ID" ColumnName="ROUTE_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetListOfFaculty_Batches" FunctionName="APTECHDBModel.Store.spGetListOfFaculty_Batches" />
+          <FunctionImportMapping FunctionImportName="spGetStudentCountBatchWise" FunctionName="APTECHDBModel.Store.spGetStudentCountBatchWise" />
+          <FunctionImportMapping FunctionImportName="spLsitOfActiveEmp" FunctionName="APTECHDBModel.Store.spLsitOfActiveEmp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="APTECHDBModel.spLsitOfActiveEmp_Result">
+                <ScalarProperty Name="FA_NAME" ColumnName="FA_NAME" />
+                <ScalarProperty Name="FA_CODE" ColumnName="FA_CODE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spStudentRegistration" FunctionName="APTECHDBModel.Store.spStudentRegistration" />
+          <FunctionImportMapping FunctionImportName="spUpdateSemesterIdBatchWise" FunctionName="APTECHDBModel.Store.spUpdateSemesterIdBatchWise" />
+          <FunctionImportMapping FunctionImportName="spUpdateStudent" FunctionName="APTECHDBModel.Store.spUpdateStudent" />
+          <FunctionImportMapping FunctionImportName="spUpdateStudent01" FunctionName="APTECHDBModel.Store.spUpdateStudent01" />
+          <FunctionImportMapping FunctionImportName="spUpdateStudentCountByBatchID" FunctionName="APTECHDBModel.Store.spUpdateStudentCountByBatchID" />
+          <FunctionImportMapping FunctionImportName="spUpdateStudentCountInBatches" FunctionName="APTECHDBModel.Store.spUpdateStudentCountInBatches" />
+          <FunctionImportMapping FunctionImportName="spUpdateStudentCountWithZero" FunctionName="APTECHDBModel.Store.spUpdateStudentCountWithZero" />
+          <FunctionImportMapping FunctionImportName="spUpdateStudentStatus" FunctionName="APTECHDBModel.Store.spUpdateStudentStatus" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

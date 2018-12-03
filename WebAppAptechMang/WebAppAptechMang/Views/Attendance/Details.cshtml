@@ -1,0 +1,106 @@
+﻿@model WebAppAptechMang.ATTENDANCE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ATTENDANCE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.STUDENT_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STUDENT_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STD_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STD_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BATCH_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BATCH_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ATT_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ATT_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SESS_PORTAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SESS_PORTAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SESS_COURSE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SESS_COURSE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MARK_ATTEND)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MARK_ATTEND)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FOLLOWUP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FOLLOWUP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ISFOLLOWUP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISFOLLOWUP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEMESTER.SEM_TITLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEMESTER.SEM_TITLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COURS.COURSE_TITLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COURS.COURSE_TITLE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WebAppAptechMang.BATCH_REGISTRATION>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DAYID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ENROLL_STD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.START_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EX_END_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.END_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REMARKS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISACTIVE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DAYID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ENROLL_STD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.START_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EX_END_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.END_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REMARKS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ISACTIVE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
