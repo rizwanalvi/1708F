@@ -7,6 +7,8 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Data.SqlClient;
+using WcfCalculator.Model;
+
 namespace WcfCalculator
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
@@ -38,6 +40,37 @@ namespace WcfCalculator
         public int Multiplication(int a, int b)
         {
             return a * b;
+        }
+
+        public int InsertEmpData(Student std)
+        {
+            _ds = new DataSet();
+            SqlConnection _conn = new SqlConnection(@"Data Source=FACULTY18;Initial Catalog=1708F;Integrated Security=False;User ID=sa;Password=sa9;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            _conn.Open();
+            SqlCommand dt = new SqlCommand("INSERT INTO STD VALUES(@NAME,@FNAME,@AGE,@CL,@GENDER)", _conn);
+            dt.Parameters.AddWithValue("@NAME", std.StudentName);
+            dt.Parameters.AddWithValue("@FNAME", std.FName);
+            dt.Parameters.AddWithValue("@AGE", std.Age);
+            dt.Parameters.AddWithValue("@CL", std.StdClass);
+            dt.Parameters.AddWithValue("@GENDER", std.Gender);
+            dt.ExecuteNonQuery();
+            return 1;
+        }
+
+        public int UpdateEmpData(Student std)
+        {
+            _ds = new DataSet();
+            SqlConnection _conn = new SqlConnection(@"Data Source=FACULTY18;Initial Catalog=1708F;Integrated Security=False;User ID=sa;Password=sa9;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            _conn.Open();
+            SqlCommand dt = new SqlCommand("UPDATE STD SET NAME =@NAME,FNAME =@FNAME,AGE = @AGE,CL = @CL,GENDER =@GENDER WHERE ID= @ID", _conn);
+            dt.Parameters.AddWithValue("@ID", std.StdID);
+            dt.Parameters.AddWithValue("@NAME", std.StudentName);
+            dt.Parameters.AddWithValue("@FNAME", std.FName);
+            dt.Parameters.AddWithValue("@AGE", std.Age);
+            dt.Parameters.AddWithValue("@CL", std.StdClass);
+            dt.Parameters.AddWithValue("@GENDER", std.Gender);
+            dt.ExecuteNonQuery();
+            return 1;
         }
     }
 }
