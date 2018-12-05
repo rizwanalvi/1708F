@@ -1,0 +1,136 @@
+﻿@model WebApplication1.STUDENTINFO
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>STUDENTINFO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.STD_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STD_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STD_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STD_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STD_FNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STD_FNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STD_PIC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STD_PIC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GENDER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GENDER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROG_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROG_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BATCH_NO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BATCH_NO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIME_SLOT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIME_SLOT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMAIL_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PAR_EMAIL_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PAR_EMAIL_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HOME_ADDRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOME_ADDRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEM_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEM_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ISSTC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISSTC)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

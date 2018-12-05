@@ -1,0 +1,26 @@
+﻿@model WebApplication3.CATEGORY
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CATEGORY</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PRO_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRO_NAME)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CAT_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

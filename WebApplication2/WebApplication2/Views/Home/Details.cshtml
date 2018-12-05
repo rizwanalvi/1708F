@@ -1,0 +1,106 @@
+﻿@model WebApplication2.STUDENTINFO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>STUDENTINFO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.STD_FNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STD_FNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STD_PIC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STD_PIC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GENDER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GENDER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROG_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROG_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BATCH_NO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BATCH_NO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIME_SLOT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIME_SLOT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMAIL_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PAR_EMAIL_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PAR_EMAIL_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HOME_ADDRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOME_ADDRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEM_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEM_ID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

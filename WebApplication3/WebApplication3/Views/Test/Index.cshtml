@@ -1,0 +1,25 @@
+﻿@model IEnumerable<WebApplication3.PRODUCT>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table class="table">
+
+    <tr>
+        <td>PRODUCT NAME</td>
+        <td> QUANTITY</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+    
+    <tr>
+        <td>@item.PRO_NAME</td>
+        <td> @item.PRO_QT</td>
+        <td>@Html.ActionLink("Edit", "Edit", "Test", new { @id = item.ID}, new { @class = "" })</td>
+    </tr>
+    }
+</table>
+
+
