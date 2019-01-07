@@ -9,7 +9,134 @@
 //------------------------------------------------------------------------------
 
 namespace WinConsumerForm.ServiceReference1 {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Student", Namespace="http://schemas.datacontract.org/2004/07/WcfCalculator.Model")]
+    [System.SerializableAttribute()]
+    public partial class Student : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AgeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GenderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StdClassField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StdIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StudentNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Age {
+            get {
+                return this.AgeField;
+            }
+            set {
+                if ((this.AgeField.Equals(value) != true)) {
+                    this.AgeField = value;
+                    this.RaisePropertyChanged("Age");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FName {
+            get {
+                return this.FNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FNameField, value) != true)) {
+                    this.FNameField = value;
+                    this.RaisePropertyChanged("FName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Gender {
+            get {
+                return this.GenderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GenderField, value) != true)) {
+                    this.GenderField = value;
+                    this.RaisePropertyChanged("Gender");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StdClass {
+            get {
+                return this.StdClassField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StdClassField, value) != true)) {
+                    this.StdClassField = value;
+                    this.RaisePropertyChanged("StdClass");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StdID {
+            get {
+                return this.StdIDField;
+            }
+            set {
+                if ((this.StdIDField.Equals(value) != true)) {
+                    this.StdIDField = value;
+                    this.RaisePropertyChanged("StdID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StudentName {
+            get {
+                return this.StudentNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StudentNameField, value) != true)) {
+                    this.StudentNameField = value;
+                    this.RaisePropertyChanged("StudentName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
@@ -38,6 +165,18 @@ namespace WinConsumerForm.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetEmpByid", ReplyAction="http://tempuri.org/IService1/GetEmpByidResponse")]
         System.Threading.Tasks.Task<System.Data.DataSet> GetEmpByidAsync(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertEmpData", ReplyAction="http://tempuri.org/IService1/InsertEmpDataResponse")]
+        int InsertEmpData(WinConsumerForm.ServiceReference1.Student std);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertEmpData", ReplyAction="http://tempuri.org/IService1/InsertEmpDataResponse")]
+        System.Threading.Tasks.Task<int> InsertEmpDataAsync(WinConsumerForm.ServiceReference1.Student std);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateEmpData", ReplyAction="http://tempuri.org/IService1/UpdateEmpDataResponse")]
+        int UpdateEmpData(WinConsumerForm.ServiceReference1.Student std);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateEmpData", ReplyAction="http://tempuri.org/IService1/UpdateEmpDataResponse")]
+        System.Threading.Tasks.Task<int> UpdateEmpDataAsync(WinConsumerForm.ServiceReference1.Student std);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -97,6 +236,22 @@ namespace WinConsumerForm.ServiceReference1 {
         
         public System.Threading.Tasks.Task<System.Data.DataSet> GetEmpByidAsync(int i) {
             return base.Channel.GetEmpByidAsync(i);
+        }
+        
+        public int InsertEmpData(WinConsumerForm.ServiceReference1.Student std) {
+            return base.Channel.InsertEmpData(std);
+        }
+        
+        public System.Threading.Tasks.Task<int> InsertEmpDataAsync(WinConsumerForm.ServiceReference1.Student std) {
+            return base.Channel.InsertEmpDataAsync(std);
+        }
+        
+        public int UpdateEmpData(WinConsumerForm.ServiceReference1.Student std) {
+            return base.Channel.UpdateEmpData(std);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateEmpDataAsync(WinConsumerForm.ServiceReference1.Student std) {
+            return base.Channel.UpdateEmpDataAsync(std);
         }
     }
 }

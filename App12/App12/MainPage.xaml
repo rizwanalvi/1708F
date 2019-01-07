@@ -1,0 +1,62 @@
+﻿<Page
+    x:Class="App12.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App12"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <CollectionViewSource x:Name="mvColectionSource" Source="{Binding}"/>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+        <StackPanel Margin="100">
+            <SearchBox  QuerySubmitted="SearchMovie_QuerySubmitted"/>
+            <TextBlock x:Name="txtMovie" TextWrapping="Wrap" Text="TextBlock" FontSize="38"/>
+            <ComboBox x:Name="lstMovies"   ItemsSource="{Binding Source={StaticResource mvColectionSource}}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse Height="100" Width="100" >
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{Binding Poster}"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Title}" FontSize="10" />
+                                <TextBlock  Text="{Binding Year}" FontSize="10" />
+                                <TextBlock Text="{Binding }" FontSize="10" />
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+                
+            </ComboBox>
+
+        </StackPanel>
+        <StackPanel>
+            <GridView x:Name="gridView" ItemsSource="{Binding Source={StaticResource mvColectionSource}}">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse Height="100" Width="100" >
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{Binding Poster}"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Title}" FontSize="10" />
+                                <TextBlock  Text="{Binding Year}" FontSize="10" />
+                                <TextBlock Text="{Binding }" FontSize="10" />
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+                
+            </GridView>
+
+        </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

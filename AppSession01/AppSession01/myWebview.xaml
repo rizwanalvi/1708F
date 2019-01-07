@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="AppSession01.myWebview"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppSession01"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <SearchBox  x:Name="searchData" Height="50" Grid.Row="0" QuerySubmitted="SearchBox_QuerySubmitted"/>
+        <WebView  x:Name="myBrowser" Grid.Row="1"  />
+        <ListBox x:Name="lstHistory" SelectionChanged="lstHistory_SelectionChanged" Grid.Row="2" Height="50"  />
+
+    </Grid>
+</Page>
