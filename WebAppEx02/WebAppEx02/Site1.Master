@@ -1,0 +1,75 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="WebAppEx02.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+     <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    ul{
+        background-color: burlywood;
+    width: 100%;
+      
+       
+        
+    }
+    li{
+display: inline;
+
+    }
+    a{
+        text-decoration: none;
+        background-color: red;
+       display: inline-block;
+       padding: 10px;
+       color: white;
+    }
+    ul>li>a:hover{
+            background-color: gray;
+            color: black;
+
+    }
+    
+    table{
+        width: 100%;
+    }
+    tr:first-child{
+        background-color: gray;
+        color: white;
+    }
+    tr:first-child:hover{
+        background-color: gray;
+        color: white;
+    }
+    tr:hover{
+        background-color: goldenrod;
+        color: white;
+
+    }
+    
+    </style>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+         <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Product</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Contact Info</a></li>
+    </ul>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
