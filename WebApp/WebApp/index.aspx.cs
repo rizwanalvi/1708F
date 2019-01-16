@@ -25,7 +25,11 @@ namespace WebApp
 
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            GridViewRow dRow = GridView1.Rows[e.NewEditIndex];
+        
+            Label lblID = (Label)dRow.FindControl("Label4");
             GridView1.EditIndex = e.NewEditIndex;
+            DropDownList dList = dRow.FindControl("DropDownList1") as DropDownList;
             LoadData();
         }
 
@@ -49,14 +53,16 @@ namespace WebApp
         {
             GridViewRow dRow = GridView1.Rows[e.RowIndex];
             TextBox tb = (TextBox) dRow.FindControl("TextBox1");
-            TextBox tbfName = (TextBox)dRow.FindControl("TextBox2");
+            TextBox tbfName = dRow.FindControl("TextBox2") as TextBox;
             Label lblID =(Label) dRow.FindControl("lblID");
+            DropDownList dList = dRow.FindControl("DropDownList1") as DropDownList;
             SqlConnection _sqlconn = new SqlConnection(ConfigurationManager.ConnectionStrings["dbConnection"].ConnectionString.ToString());
             _sqlconn.Open();
-            SqlDataAdapter _dAdapter = new SqlDataAdapter("UPDATE STD SET NAME = @NAME,FNAME=@FNAME WHERE ID = @ID", _sqlconn);
+            SqlDataAdapter _dAdapter = new SqlDataAdapter("UPDATE STD SET NAME = @NAME,FNAME=@FNAME,GENDER =@GENDER WHERE ID = @ID", _sqlconn);
             _dAdapter.SelectCommand.Parameters.AddWithValue("@ID", lblID.Text);
             _dAdapter.SelectCommand.Parameters.AddWithValue("@NAME", tb.Text);
             _dAdapter.SelectCommand.Parameters.AddWithValue("@FNAME",tbfName.Text);
+            _dAdapter.SelectCommand.Parameters.AddWithValue("@GENDER", dList.SelectedValue);
             _dAdapter.SelectCommand.ExecuteNonQuery();
             GridView1.EditIndex = -1;
             LoadData();
