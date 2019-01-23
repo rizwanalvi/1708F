@@ -123,8 +123,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ConnectionDb.cs" />
+    <Compile Include="Models\DAOLogin.cs" />
     <Compile Include="Models\DOAMobile.cs" />
     <Compile Include="Models\Mobile.cs" />
+    <Compile Include="Models\MyLogin.cs" />
+    <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,8 @@
 </head>
 <body>
     <form id="form1" runat="server" >
-    <div class="container bg-warning">
+    <div class="container">
+        <div class="container-fluid bg-warning">
      <div class="form-group">
     <label for="txtName">Mobile Name</label>
          <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*RequiredField" ControlToValidate="txtName"  CssClass="alert-danger" Font-Size="Smaller"></asp:RequiredFieldValidator>
@@ -47,17 +48,17 @@
 
             </div>
         </div>
-        <div>
-            <asp:GridView ID="GridView1" runat="server" CssClass="table" AutoGenerateColumns="False">
+        <div  >
+            <asp:GridView ID="GridView1" runat="server" CssClass="table" AutoGenerateColumns="False" BorderStyle="None" AllowSorting="True" GridLines="None" HorizontalAlign="Center">
                 <Columns>
-                    <asp:BoundField DataField="ID" HeaderText="ID" />
+                    <asp:BoundField DataField="ID" HeaderText="ID"/>
                     <asp:BoundField DataField="NAME" HeaderText="MOBILE NAME" />
                     <asp:ImageField DataImageUrlField="IMGPATH" HeaderText="IMAGE" ControlStyle-CssClass="img-thumbnail" ControlStyle-Height="50px" ControlStyle-Width="50px">
                     </asp:ImageField>
                 </Columns>
             </asp:GridView>
         </div>
-
+        </div>
     
     </form>
 </body>

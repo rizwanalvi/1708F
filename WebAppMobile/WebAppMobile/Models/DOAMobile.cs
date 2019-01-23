@@ -10,7 +10,8 @@ namespace WebAppMobile.Models
     {
         SqlConnection _sqlconn = null;
         public DOAMobile() {
-            _sqlconn = new SqlConnection(@"Data Source=FACULTY18;Initial Catalog=dbMobile;Integrated Security=False;User ID=sa;Password=sa9;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            //_sqlconn = new SqlConnection(@"Data Source=FACULTY18;Initial Catalog=dbMobile;Integrated Security=False;User ID=sa;Password=sa9;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            _sqlconn = ConnectionDb.getInstance().getConnection();
         }
         public void InsertMobile(Mobile mb) {
             if (_sqlconn.State == System.Data.ConnectionState.Closed)
