@@ -3,5 +3,24 @@
     ViewBag.Title = "AboutUs";
 }
 
-<h2>AboutUs</h2>
+<h2></h2>
 
+<table class="table">
+
+    <tbody>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Location</th>
+            <th scope="col">Address</th>
+            <th scope="col">Details</th>
+        </tr>
+    </thead>
+        <tr>
+            <th scope="row">@ViewBag.PageTitle.ContactId</th>
+            <td>@ViewBag.PageTitle.Location</td>
+            <td>@ViewBag.PageTitle.Address</td>
+            <td><a href="#">Show</a></td>
+        </tr>
+        </tbody>
+</table>
