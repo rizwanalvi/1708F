@@ -11,11 +11,14 @@ namespace Webmvc01.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            String PgName = "HOME";
+            ViewBag.PageTitle = PgName;
             return View();
         }
 
         public ActionResult AboutUs()
         {
+            ViewBag.PageTitle = "ABOUT US";
             return View();
         }
 
