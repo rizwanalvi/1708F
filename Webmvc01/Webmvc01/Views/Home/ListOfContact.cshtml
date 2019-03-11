@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "ListOfContact";
+}
+
+<h2>ListOfContact</h2>
+
+
+
+
+
+<table class="table">
+
+
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Location</th>
+            <th scope="col">Address</th>
+            <th scope="col">Details</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+            @foreach (var item in ViewBag.PageTitle)
+            {
+
+                <tr>
+
+
+                    <th scope="row">@item.ContactId</th>
+                    <td>@item.Location</td>
+                    <td>@item.Address</td>
+                    <td>
+                        <a href="#">Show</a>
+
+                    </td>
+                </tr>
+            }
+                
+</tbody>
+</table>

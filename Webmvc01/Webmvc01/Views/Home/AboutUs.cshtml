@@ -1,13 +1,12 @@
 ﻿
 @{
     ViewBag.Title = "AboutUs";
+    var contact = ViewBag.PageTitle;
 }
 
 <h2></h2>
 
 <table class="table">
-
-    <tbody>
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -16,11 +15,13 @@
             <th scope="col">Details</th>
         </tr>
     </thead>
+    <tbody>
         <tr>
-            <th scope="row">@ViewBag.PageTitle.ContactId</th>
-            <td>@ViewBag.PageTitle.Location</td>
-            <td>@ViewBag.PageTitle.Address</td>
-            <td><a href="#">Show</a></td>
+            <th scope="row">@contact.ContactId</th>
+            <td>@contact.Location</td>
+            <td>@contact.Address</td>
+            <td>@Html.ActionLink("Show 01", "AboutUs", new { id = 1 }, null)
+            <a href="#">Show</a></td>
         </tr>
-        </tbody>
+    </tbody>
 </table>

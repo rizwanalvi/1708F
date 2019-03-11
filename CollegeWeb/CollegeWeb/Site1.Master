@@ -1,0 +1,169 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="CollegeWeb.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- PT Sans -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+	<!-- Crete Roung -->
+	<link href='http://fonts.googleapis.com/css?family=Crete+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+	<!-- CSS
+  ================================================== -->
+  	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/skeleton.css">
+	<link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+	<script type="text/javascript" src="js/validate.js"></script>
+	<script type="text/javascript" src="js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+	<script type="text/javascript">
+		$(document).ready(function() {
+				$("a[rel=example_group]").fancybox({
+				'transitionIn'		: 'none',
+				'transitionOut'		: 'none',
+				'titlePosition' 	: 'over',
+				'titleFormat'		: function(title, currentArray, currentIndex, currentOpts) {
+					return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+				}
+			});
+		});
+	</script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        * {
+            margin:0px;
+            padding:0px;
+        }
+    </style>
+</head>
+<body>
+    		
+		
+
+
+    <form id="form1" runat="server">
+   <header>	
+          <nav>
+			<div class='container'>
+				<div class='five columns logo'>
+					<a href='#'>GOVERMENT PREMIER COLLEGE NO.1</a>
+				</div>
+
+				<div class='eleven columns'>
+          <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" class='mainMenu' Width="100%">
+             <Items>
+                 <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" Value="Home"></asp:MenuItem>
+                  <asp:MenuItem NavigateUrl="~/program.aspx" Text="Programs" Value="Programs"></asp:MenuItem>
+                  <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" Value="Home"></asp:MenuItem>
+                  <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" Value="Home"></asp:MenuItem>
+                  <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" Value="Home"></asp:MenuItem>
+             </Items>
+                    </asp:Menu>
+				<!--	<ul class='mainMenu'>
+						<li class="active"><a href='Default.aspx' title='Home'>Home</a></li>
+						<li><a href='program.aspx' title='Programs'>Programs</a></li>
+						<li><a href='faculty.aspx' title='Faculty'>Faculty</a></li>
+						<li><a href='admission.aspx' title='Admission'>Admission</a></li>
+						<li><a href='#' title='Blog'>Blog</a></li>
+						<li><a href='#' title='Life At'>Life At</a></li>
+						<li><a href='#' title='Contact'>Contact</a></li>
+						<li><a href='sportal.aspx' title='Student Portal'>Student Portal</a></li>
+					</ul>
+                    -->
+				</div>
+			</div>
+		</nav>
+         	</header> 
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+        
+
+    </form>
+    <footer>
+		<div class='container'>
+			
+			<div class='eight columns'>
+				<h5>Some stuff can go here</h5>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+			</div>
+
+			<div class='four columns social'>
+				<h5>Social media</h5>
+				<a href='#'><img src='images/social/dribbble.png'></a>
+				<a href='#'><img src='images/social/facebook.png'></a>
+				<a href='#'><img src='images/social/twitter.png'></a>
+				<a href='#'><img src='images/social/forrst.png'></a>
+			</div>
+
+			<div class='four columns'>
+				<h5>Get in touch</h5>
+				<p>You can call us at:<br>
+					t: 161 - 123 - CALL - NOW</p>
+				<p>Or drop us a line on:
+					e: <a href='mailto:contact@free.com'>contact@free.com</a></p>
+			</div>
+
+
+		<a id='top' href='#'>&uarr;</a>	
+		</div>
+	</footer>
+	<script type="text/javascript">	
+		var form = $('form');
+	
+		$(document).ready(function(){
+		    form.validate({
+		    	ignore: "",
+	            rules: {
+	            	'message': {
+	                    required: true,	                 
+	                },
+	            	'name': {
+	                    required: true,	                 
+	                },
+	                'mail': {
+	                    required: true,
+	                    email: true
+	                }			                
+	            },
+	            errorPlacement: function(error, element){}
+
+		    });
+		  });     
+	</script>
+
+
+	<script type="text/javascript">
+		var toper = $('a#top');
+
+
+		$(window).scroll(function(){
+            if ($(this).scrollTop() > 100) {
+                toper.fadeIn( 200 );
+            } else {
+                toper.fadeOut( 200 );
+            }
+        });
+
+         toper.click(function(){
+        	$('html, body').animate({scrollTop:0}, 500);	        	
+        	return false;
+    	}); 
+	</script>
+</body>
+</html>
