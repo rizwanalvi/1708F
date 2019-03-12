@@ -16,6 +16,7 @@ namespace WebMvc02.Controllers
             ViewBag.Data = dbEntity.Mobiles;
             return View();
         }
+        [Authorize]
         public ActionResult ShowMobile(int id)
         {
             dbEntity = new dbMobileEntities();
