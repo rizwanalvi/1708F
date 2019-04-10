@@ -1,0 +1,24 @@
+﻿@using WebRoleBasedLogin.Models
+@model User
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.UserName, new { @class = "label-control" })
+        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.UsePassword, new { @class = "label-control" })
+        @Html.PasswordFor(x => x.UsePassword, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" name="name" value="Login" class="btn btn-warning" />
+    </div>
+}
