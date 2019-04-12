@@ -1,0 +1,37 @@
+﻿@model PagedList.IPagedList<WebPagination.Models.PRODUCT>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">PRODUCT NAME</th>
+         
+            <th scope="col">PRICE</th>
+            <th scope="col">PRODUCT QUANTITY</th>
+            <th scope="col">CATEGORY</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.PRO_NAME</th>
+              
+                <td>@item.PRO_PRICE</td>
+                <td>@item.PRO_QT</td>
+                <td>@item.CATEGORY.PRO_NAME</td>
+
+            </tr>
+        }
+       
+    
+    </tbody>
+    </table>
+  @Html.PagedListPager(Model,page=>Url.Action("Index",new { page, pageSize = Model.PageSize}))
