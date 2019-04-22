@@ -1,0 +1,58 @@
+﻿@model WebApp1603E.Models.MOBDATA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MOBDATA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DES_MOBILE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DES_MOBILE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRICE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRICE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOBILBRAND.BRANDNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOBILBRAND.BRANDNAME)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

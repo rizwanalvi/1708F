@@ -1,0 +1,23 @@
+﻿@model ImageHandling.Models.PRODUCT
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "Home",FormMethod.Post,new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group"> 
+       @Html.TextBoxFor(x=>x.PRONAME,new { @class= "form-control"})
+    </div>
+    <div class="form-group">
+        @Html.TextBoxFor(x => x.PROPRICE, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <input type="file" name="ImgPath" value="" />
+    </div>
+    <div class="form-group">
+        <input type="submit" name="name" value="Save" />
+    </div>
+
+}

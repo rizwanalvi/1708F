@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ImageHandling.Models.PRODUCT>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+    
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.PRODID</th>
+                <td>@item.PRONAME</td>
+                <td>@item.PROPRICE</td>
+                <td><img src="@item.PIMG" alt="Alternate Text"  height="60" width="50"/></td>
+            </tr>
+            
+
+        }
+    </tbody>
+</table>

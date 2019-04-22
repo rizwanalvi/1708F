@@ -13,10 +13,13 @@ namespace WebMvc02.Controllers
         public ActionResult Index()
         {
             dbEntity = new dbMobileEntities();
-            ViewBag.Data = dbEntity.Mobiles;
-            return View();
+           // ViewBag.Data = dbEntity.Mobiles;
+            //     ViewData["DataKey"] = dbEntity.Mobiles;
+            //TempData["DataKey"] = dbEntity.Mobiles;
+            //ViewModel
+            return View(dbEntity.Mobiles.ToList());
         }
-        [Authorize]
+       
         public ActionResult ShowMobile(int id)
         {
             dbEntity = new dbMobileEntities();
@@ -45,7 +48,12 @@ namespace WebMvc02.Controllers
             return View();
         }
 
-       
+        public ActionResult Tester()
+        {
+            dbEntity = new dbMobileEntities();
+            return View(dbEntity.Mobiles.ToList());
+        }
+
 
     }
 }

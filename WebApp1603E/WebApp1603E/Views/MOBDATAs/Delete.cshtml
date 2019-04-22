@@ -1,0 +1,64 @@
+﻿@model WebApp1603E.Models.MOBDATA
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>MOBDATA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DES_MOBILE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DES_MOBILE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRICE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRICE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOBILBRAND.BRANDNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOBILBRAND.BRANDNAME)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

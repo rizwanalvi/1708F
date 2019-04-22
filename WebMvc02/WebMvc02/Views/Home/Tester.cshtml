@@ -1,0 +1,11 @@
+﻿@model IEnumerable<WebMvc02.Models.Mobile>
+@{
+    ViewBag.Title = "Tester";
+}
+
+<h2>Tester</h2>
+
+@foreach (var item in Model)
+{
+    @item.ID
+}

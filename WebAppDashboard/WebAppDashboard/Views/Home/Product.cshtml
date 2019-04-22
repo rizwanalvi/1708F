@@ -1,0 +1,54 @@
+﻿@model WebAppDashboard.Models.Product
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Layout01.cshtml";
+}
+<style>
+    #loading {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(0, 148, 255); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+</style>
+@*, LoadingElementId = "loading", LoadingElementDuration = 2000 *@
+<div>
+    @using (Ajax.BeginForm("Product", "Home", new AjaxOptions { HttpMethod = "POST" }))
+    {
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(x => x.ProductId, new { @class = "label-control" })
+                    @Html.TextBoxFor(x => x.ProductId, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.ProductId)
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.ProductName, new { @class = "label-control" })
+                    @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control" })
+
+                </div>
+                <div class="col-md-4">
+                    <img src="~/img/lg.curve-bars-loading-indicator.gif" alt="Alternate Text" height="150" width="150" />
+                    </div>
+                </div>
+           
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <input type="submit" name="name" value="Add" class="btn btn-warning" />
+            </div>
+            </div>
+            }
+
+            <div id="loading">
+                <img src="~/img/lg.curve-bars-loading-indicator.gif" alt="Alternate Text" />
+            </div>
+        </div>

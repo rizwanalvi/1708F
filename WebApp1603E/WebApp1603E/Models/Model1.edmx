@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="mobiledbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MOBDATA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BRAND_ID" Type="int" />
+          <Property Name="MNAME" Type="varchar" MaxLength="50" />
+          <Property Name="DES_MOBILE" Type="varchar(max)" />
+          <Property Name="PRICE" Type="float" />
+          <Property Name="IMG" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MOBILBRANDS">
+          <Key>
+            <PropertyRef Name="BRAND_ID" />
+          </Key>
+          <Property Name="BRAND_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BRANDNAME" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Mobiles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MOBILENAME" Type="varchar" MaxLength="50" />
+          <Property Name="BRAND" Type="varchar" MaxLength="50" />
+          <Property Name="DETAILS" Type="varchar(max)" />
+          <Property Name="PRICE" Type="float" />
+          <Property Name="IMG" Type="varchar" MaxLength="50" />
+          <Property Name="MODEL" Type="varchar" MaxLength="50" />
+          <Property Name="CAMERA" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbLogin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UNAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UPASS" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="LROLE" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__MOBDATA__BRAND_I__276EDEB3">
+          <End Role="MOBILBRANDS" Type="Self.MOBILBRANDS" Multiplicity="0..1" />
+          <End Role="MOBDATA" Type="Self.MOBDATA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MOBILBRANDS">
+              <PropertyRef Name="BRAND_ID" />
+            </Principal>
+            <Dependent Role="MOBDATA">
+              <PropertyRef Name="BRAND_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mobiledbModelStoreContainer">
+          <EntitySet Name="MOBDATA" EntityType="Self.MOBDATA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MOBILBRANDS" EntityType="Self.MOBILBRANDS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mobiles" EntityType="Self.Mobiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbLogin" EntityType="Self.tbLogin" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__MOBDATA__BRAND_I__276EDEB3" Association="Self.FK__MOBDATA__BRAND_I__276EDEB3">
+            <End Role="MOBILBRANDS" EntitySet="MOBILBRANDS" />
+            <End Role="MOBDATA" EntitySet="MOBDATA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mobiledbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MOBDATA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BRAND_ID" Type="Int32" />
+          <Property Name="MNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DES_MOBILE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PRICE" Type="Double" />
+          <Property Name="IMG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MOBILBRAND" Relationship="Self.FK__MOBDATA__BRAND_I__276EDEB3" FromRole="MOBDATA" ToRole="MOBILBRANDS" />
+        </EntityType>
+        <EntityType Name="MOBILBRAND">
+          <Key>
+            <PropertyRef Name="BRAND_ID" />
+          </Key>
+          <Property Name="BRAND_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BRANDNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MOBDATAs" Relationship="Self.FK__MOBDATA__BRAND_I__276EDEB3" FromRole="MOBILBRANDS" ToRole="MOBDATA" />
+        </EntityType>
+        <EntityType Name="Mobile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MOBILENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BRAND" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DETAILS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PRICE" Type="Double" />
+          <Property Name="IMG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODEL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CAMERA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbLogin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UPASS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LROLE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__MOBDATA__BRAND_I__276EDEB3">
+          <End Role="MOBILBRANDS" Type="Self.MOBILBRAND" Multiplicity="0..1" />
+          <End Role="MOBDATA" Type="Self.MOBDATA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MOBILBRANDS">
+              <PropertyRef Name="BRAND_ID" />
+            </Principal>
+            <Dependent Role="MOBDATA">
+              <PropertyRef Name="BRAND_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mobiledbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MOBDATAs" EntityType="Self.MOBDATA" />
+          <EntitySet Name="MOBILBRANDS" EntityType="Self.MOBILBRAND" />
+          <EntitySet Name="Mobiles" EntityType="Self.Mobile" />
+          <EntitySet Name="tbLogins" EntityType="Self.tbLogin" />
+          <AssociationSet Name="FK__MOBDATA__BRAND_I__276EDEB3" Association="Self.FK__MOBDATA__BRAND_I__276EDEB3">
+            <End Role="MOBILBRANDS" EntitySet="MOBILBRANDS" />
+            <End Role="MOBDATA" EntitySet="MOBDATAs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="mobiledbModelStoreContainer" CdmEntityContainer="mobiledbEntities">
+          <EntitySetMapping Name="MOBDATAs">
+            <EntityTypeMapping TypeName="mobiledbModel.MOBDATA">
+              <MappingFragment StoreEntitySet="MOBDATA">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BRAND_ID" ColumnName="BRAND_ID" />
+                <ScalarProperty Name="MNAME" ColumnName="MNAME" />
+                <ScalarProperty Name="DES_MOBILE" ColumnName="DES_MOBILE" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="IMG" ColumnName="IMG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MOBILBRANDS">
+            <EntityTypeMapping TypeName="mobiledbModel.MOBILBRAND">
+              <MappingFragment StoreEntitySet="MOBILBRANDS">
+                <ScalarProperty Name="BRAND_ID" ColumnName="BRAND_ID" />
+                <ScalarProperty Name="BRANDNAME" ColumnName="BRANDNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mobiles">
+            <EntityTypeMapping TypeName="mobiledbModel.Mobile">
+              <MappingFragment StoreEntitySet="Mobiles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MOBILENAME" ColumnName="MOBILENAME" />
+                <ScalarProperty Name="BRAND" ColumnName="BRAND" />
+                <ScalarProperty Name="DETAILS" ColumnName="DETAILS" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="IMG" ColumnName="IMG" />
+                <ScalarProperty Name="MODEL" ColumnName="MODEL" />
+                <ScalarProperty Name="CAMERA" ColumnName="CAMERA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbLogins">
+            <EntityTypeMapping TypeName="mobiledbModel.tbLogin">
+              <MappingFragment StoreEntitySet="tbLogin">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UNAME" ColumnName="UNAME" />
+                <ScalarProperty Name="UPASS" ColumnName="UPASS" />
+                <ScalarProperty Name="LROLE" ColumnName="LROLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

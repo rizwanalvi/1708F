@@ -1,10 +1,10 @@
-﻿
+﻿@model IEnumerable<WebMvc02.Models.Mobile>
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
-<table class="table">
+<table class="table" id="assets-data-table">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -14,7 +14,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in ViewBag.Data)
+        @foreach (var item in Model)
         {
             <tr>
                 <th scope="row">@item.ID</th>
@@ -27,3 +27,4 @@
         }
     </tbody>
 </table>
+

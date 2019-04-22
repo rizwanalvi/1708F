@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OSMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BRANDS">
+          <Key>
+            <PropertyRef Name="BRANDID" />
+          </Key>
+          <Property Name="BRANDID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BNAME" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CATEGORY">
+          <Key>
+            <PropertyRef Name="CATID" />
+          </Key>
+          <Property Name="CATID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CATNAME" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTS">
+          <Key>
+            <PropertyRef Name="PRODID" />
+          </Key>
+          <Property Name="PRODID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRONAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CATID" Type="int" />
+          <Property Name="SUBID" Type="int" />
+          <Property Name="BRANDID" Type="int" />
+          <Property Name="PROPRICE" Type="float" />
+          <Property Name="QUANTITY" Type="int" />
+          <Property Name="PIMG" Type="varchar" MaxLength="10" />
+          <Property Name="DESCR" Type="varchar" MaxLength="255" />
+          <Property Name="COLOR" Type="varchar" MaxLength="50" />
+          <Property Name="SIZE" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="SUBCATEGORY">
+          <Key>
+            <PropertyRef Name="SUBID" />
+          </Key>
+          <Property Name="SUBID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SUBNAME" Type="varchar" MaxLength="50" />
+          <Property Name="CATID" Type="int" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="USERPASSWORD" Type="varchar" MaxLength="50" />
+          <Property Name="USEROLE" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__PRODUCTS__BRANDI__2D27B809">
+          <End Role="BRANDS" Type="Self.BRANDS" Multiplicity="0..1" />
+          <End Role="PRODUCTS" Type="Self.PRODUCTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BRANDS">
+              <PropertyRef Name="BRANDID" />
+            </Principal>
+            <Dependent Role="PRODUCTS">
+              <PropertyRef Name="BRANDID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PRODUCTS__CATID__2B3F6F97">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
+          <End Role="PRODUCTS" Type="Self.PRODUCTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATID" />
+            </Principal>
+            <Dependent Role="PRODUCTS">
+              <PropertyRef Name="CATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PRODUCTS__SUBID__2C3393D0">
+          <End Role="SUBCATEGORY" Type="Self.SUBCATEGORY" Multiplicity="0..1" />
+          <End Role="PRODUCTS" Type="Self.PRODUCTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBCATEGORY">
+              <PropertyRef Name="SUBID" />
+            </Principal>
+            <Dependent Role="PRODUCTS">
+              <PropertyRef Name="SUBID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SUBCATEGO__CATID__25869641">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
+          <End Role="SUBCATEGORY" Type="Self.SUBCATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATID" />
+            </Principal>
+            <Dependent Role="SUBCATEGORY">
+              <PropertyRef Name="CATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OSMModelStoreContainer">
+          <EntitySet Name="BRANDS" EntityType="Self.BRANDS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SUBCATEGORY" EntityType="Self.SUBCATEGORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__PRODUCTS__BRANDI__2D27B809" Association="Self.FK__PRODUCTS__BRANDI__2D27B809">
+            <End Role="BRANDS" EntitySet="BRANDS" />
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PRODUCTS__CATID__2B3F6F97" Association="Self.FK__PRODUCTS__CATID__2B3F6F97">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PRODUCTS__SUBID__2C3393D0" Association="Self.FK__PRODUCTS__SUBID__2C3393D0">
+            <End Role="SUBCATEGORY" EntitySet="SUBCATEGORY" />
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SUBCATEGO__CATID__25869641" Association="Self.FK__SUBCATEGO__CATID__25869641">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="SUBCATEGORY" EntitySet="SUBCATEGORY" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OSMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BRAND">
+          <Key>
+            <PropertyRef Name="BRANDID" />
+          </Key>
+          <Property Name="BRANDID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PRODUCTS" Relationship="Self.FK__PRODUCTS__BRANDI__2D27B809" FromRole="BRANDS" ToRole="PRODUCTS" />
+        </EntityType>
+        <EntityType Name="CATEGORY">
+          <Key>
+            <PropertyRef Name="CATID" />
+          </Key>
+          <Property Name="CATID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PRODUCTS" Relationship="Self.FK__PRODUCTS__CATID__2B3F6F97" FromRole="CATEGORY" ToRole="PRODUCTS" />
+          <NavigationProperty Name="SUBCATEGORies" Relationship="Self.FK__SUBCATEGO__CATID__25869641" FromRole="CATEGORY" ToRole="SUBCATEGORY" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="PRODID" />
+          </Key>
+          <Property Name="PRODID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRONAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CATID" Type="Int32" />
+          <Property Name="SUBID" Type="Int32" />
+          <Property Name="BRANDID" Type="Int32" />
+          <Property Name="PROPRICE" Type="Double" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="PIMG" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DESCR" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="COLOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SIZE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BRAND" Relationship="Self.FK__PRODUCTS__BRANDI__2D27B809" FromRole="PRODUCTS" ToRole="BRANDS" />
+          <NavigationProperty Name="CATEGORY" Relationship="Self.FK__PRODUCTS__CATID__2B3F6F97" FromRole="PRODUCTS" ToRole="CATEGORY" />
+          <NavigationProperty Name="SUBCATEGORY" Relationship="Self.FK__PRODUCTS__SUBID__2C3393D0" FromRole="PRODUCTS" ToRole="SUBCATEGORY" />
+        </EntityType>
+        <EntityType Name="SUBCATEGORY">
+          <Key>
+            <PropertyRef Name="SUBID" />
+          </Key>
+          <Property Name="SUBID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SUBNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CATID" Type="Int32" />
+          <NavigationProperty Name="CATEGORY" Relationship="Self.FK__SUBCATEGO__CATID__25869641" FromRole="SUBCATEGORY" ToRole="CATEGORY" />
+          <NavigationProperty Name="PRODUCTS" Relationship="Self.FK__PRODUCTS__SUBID__2C3393D0" FromRole="SUBCATEGORY" ToRole="PRODUCTS" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USERPASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USEROLE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__PRODUCTS__BRANDI__2D27B809">
+          <End Role="BRANDS" Type="Self.BRAND" Multiplicity="0..1" />
+          <End Role="PRODUCTS" Type="Self.PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BRANDS">
+              <PropertyRef Name="BRANDID" />
+            </Principal>
+            <Dependent Role="PRODUCTS">
+              <PropertyRef Name="BRANDID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PRODUCTS__CATID__2B3F6F97">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
+          <End Role="PRODUCTS" Type="Self.PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATID" />
+            </Principal>
+            <Dependent Role="PRODUCTS">
+              <PropertyRef Name="CATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SUBCATEGO__CATID__25869641">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
+          <End Role="SUBCATEGORY" Type="Self.SUBCATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATID" />
+            </Principal>
+            <Dependent Role="SUBCATEGORY">
+              <PropertyRef Name="CATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PRODUCTS__SUBID__2C3393D0">
+          <End Role="SUBCATEGORY" Type="Self.SUBCATEGORY" Multiplicity="0..1" />
+          <End Role="PRODUCTS" Type="Self.PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUBCATEGORY">
+              <PropertyRef Name="SUBID" />
+            </Principal>
+            <Dependent Role="PRODUCTS">
+              <PropertyRef Name="SUBID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OSMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BRANDS" EntityType="Self.BRAND" />
+          <EntitySet Name="CATEGORies" EntityType="Self.CATEGORY" />
+          <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCT" />
+          <EntitySet Name="SUBCATEGORies" EntityType="Self.SUBCATEGORY" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <AssociationSet Name="FK__PRODUCTS__BRANDI__2D27B809" Association="Self.FK__PRODUCTS__BRANDI__2D27B809">
+            <End Role="BRANDS" EntitySet="BRANDS" />
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PRODUCTS__CATID__2B3F6F97" Association="Self.FK__PRODUCTS__CATID__2B3F6F97">
+            <End Role="CATEGORY" EntitySet="CATEGORies" />
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SUBCATEGO__CATID__25869641" Association="Self.FK__SUBCATEGO__CATID__25869641">
+            <End Role="CATEGORY" EntitySet="CATEGORies" />
+            <End Role="SUBCATEGORY" EntitySet="SUBCATEGORies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PRODUCTS__SUBID__2C3393D0" Association="Self.FK__PRODUCTS__SUBID__2C3393D0">
+            <End Role="SUBCATEGORY" EntitySet="SUBCATEGORies" />
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OSMModelStoreContainer" CdmEntityContainer="OSMEntities">
+          <EntitySetMapping Name="BRANDS">
+            <EntityTypeMapping TypeName="OSMModel.BRAND">
+              <MappingFragment StoreEntitySet="BRANDS">
+                <ScalarProperty Name="BRANDID" ColumnName="BRANDID" />
+                <ScalarProperty Name="BNAME" ColumnName="BNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CATEGORies">
+            <EntityTypeMapping TypeName="OSMModel.CATEGORY">
+              <MappingFragment StoreEntitySet="CATEGORY">
+                <ScalarProperty Name="CATID" ColumnName="CATID" />
+                <ScalarProperty Name="CATNAME" ColumnName="CATNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTS">
+            <EntityTypeMapping TypeName="OSMModel.PRODUCT">
+              <MappingFragment StoreEntitySet="PRODUCTS">
+                <ScalarProperty Name="PRODID" ColumnName="PRODID" />
+                <ScalarProperty Name="PRONAME" ColumnName="PRONAME" />
+                <ScalarProperty Name="CATID" ColumnName="CATID" />
+                <ScalarProperty Name="SUBID" ColumnName="SUBID" />
+                <ScalarProperty Name="BRANDID" ColumnName="BRANDID" />
+                <ScalarProperty Name="PROPRICE" ColumnName="PROPRICE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PIMG" ColumnName="PIMG" />
+                <ScalarProperty Name="DESCR" ColumnName="DESCR" />
+                <ScalarProperty Name="COLOR" ColumnName="COLOR" />
+                <ScalarProperty Name="SIZE" ColumnName="SIZE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUBCATEGORies">
+            <EntityTypeMapping TypeName="OSMModel.SUBCATEGORY">
+              <MappingFragment StoreEntitySet="SUBCATEGORY">
+                <ScalarProperty Name="SUBID" ColumnName="SUBID" />
+                <ScalarProperty Name="SUBNAME" ColumnName="SUBNAME" />
+                <ScalarProperty Name="CATID" ColumnName="CATID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="OSMModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="USERPASSWORD" ColumnName="USERPASSWORD" />
+                <ScalarProperty Name="USEROLE" ColumnName="USEROLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
