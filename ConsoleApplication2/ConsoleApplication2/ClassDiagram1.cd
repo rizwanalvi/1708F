@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ConsoleApplication2.Model.DALCategory">
+    <Position X="0.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAABAAAAEAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Model\DALCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApplication2.Model.Category">
+    <Position X="3" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApplication2.Model.DALProduct">
+    <Position X="4" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Model\DALProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApplication2.Model.Product">
+    <Position X="2.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAAAAAAAAAAAACAAAAAAAAAAAAAgAAIAAA=</HashCode>
+      <FileName>Model\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
